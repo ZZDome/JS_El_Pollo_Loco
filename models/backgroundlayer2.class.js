@@ -4,7 +4,8 @@ class Backgroundlayer2 extends MovableObject {
     height = 480;
     width = 720 * 2;
 
-    constructor(){
-        super().loadImage('../img/5_background/layers/2_second_layer/full.png')
+    constructor(x){
+        super().loadImage('../img/5_background/layers/2_second_layer/full.png');
+        this.x = x;
     }
 }

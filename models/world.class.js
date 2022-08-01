@@ -1,8 +1,23 @@
 class World{
     air = new Air;
-    bglayer3 = [new Backgroundlayer3()];
-    bglayer2 = [new Backgroundlayer2()];
-    bglayer1 = [new Backgroundlayer1()];
+    bglayer3 = [
+        new Backgroundlayer3(0),
+        new Backgroundlayer3(720*2),
+        new Backgroundlayer3(720*4),
+        new Backgroundlayer3(720*6) 
+    ];
+    bglayer2 = [
+        new Backgroundlayer2(0),
+        new Backgroundlayer2(720*2),
+        new Backgroundlayer2(720*4),
+        new Backgroundlayer2(720*6) 
+    ];
+    bglayer1 = [
+        new Backgroundlayer1(0),
+        new Backgroundlayer1(720*2),
+        new Backgroundlayer1(720*4),
+        new Backgroundlayer1(720*6) 
+    ];
     character = new Character;
     enemies = [
         new Chicken(),
