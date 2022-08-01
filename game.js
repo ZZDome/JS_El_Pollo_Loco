@@ -9,11 +9,9 @@ function init(){
 }
 
 window.addEventListener('keydown', (e) => {
-    console.log(e);
     keyboard.keyPressed(e);
 });
 
 window.addEventListener('keyup', (e) => {
-    console.log(e);
     keyboard.keyNotPressed(e);
 });
