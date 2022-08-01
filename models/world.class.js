@@ -15,23 +15,39 @@ class World{
     ];
     canvas;
     ctx;
+    keyboard;
 
-    constructor(canvas){
+    constructor(canvas, keyboard){
         
         this.ctx = canvas.getContext('2d');
-        this.canvas = canvas
+        this.canvas = canvas;
+        this.keyboard = keyboard;
         this.draw();
+        this.setWorld();
+    }
+
+    setWorld(){
+        this.character.world = this;
     }
 
     drawObjects(objects){
         objects.forEach(objects => {
             this.ctx.drawImage(objects.img, objects.x, objects.y, objects.width, objects.height);
-
         });
     }
 
     drawObject(object){
+        if(object.otherDirection){
+            this.ctx.save();
+            this.ctx.translate(object.width, 0);
+            this.ctx.scale(-1, 1);
+            object.x = object.x * -1;
+        };
         this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
+        if(object.otherDirection){
+            object.x = object.x * -1;
+            this.ctx.restore();
+        };
     }
 
     draw(){

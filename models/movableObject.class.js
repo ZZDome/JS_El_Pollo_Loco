@@ -5,6 +5,10 @@ class MovableObject{
     height = 300;
     img;
     imageCache = {};
+    currentImage = 0;
+    speed = Math.random();
+    world;
+    otherDirection = false;
 
     loadImage(path){
         this.img = new Image();

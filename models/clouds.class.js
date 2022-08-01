@@ -3,7 +3,6 @@ class Cloud extends MovableObject {
     y = 0;
     height = 300;
     width = 500;
-    speed = Math.random();
     despawnX = 0 - this.width;
 
     constructor(){
