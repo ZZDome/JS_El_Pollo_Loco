@@ -16,6 +16,7 @@ class World{
     canvas;
     ctx;
     keyboard;
+    camaraX = 0;
 
     constructor(canvas, keyboard){
         
@@ -52,13 +53,20 @@ class World{
 
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.drawObject(this.air)
-        this.drawObjects(this.bglayer3)
-        this.drawObjects(this.bglayer2)
-        this.drawObjects(this.bglayer1)
-        this.drawObjects(this.cloud)
-        this.drawObjects(this.enemies)
-        this.drawObject(this.character)        
+
+        this.drawObject(this.air);
+
+        this.ctx.translate(this.camaraX, 0);
+
+        
+        this.drawObjects(this.bglayer3);
+        this.drawObjects(this.bglayer2);
+        this.drawObjects(this.bglayer1);
+        this.drawObjects(this.cloud);
+        this.drawObjects(this.enemies);
+        this.drawObject(this.character);    
+        
+        this.ctx.translate(-this.camaraX, 0);
         
         let self = this;
         requestAnimationFrame(function() {
