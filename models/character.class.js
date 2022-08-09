@@ -96,56 +96,38 @@ class Character extends MovableObject {
 
         setInterval(() => {
             if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
-                let i = this.currentImage % this.IMAGES_WALKING.length;
-                let path = this.IMAGES_WALKING[i];
-                this.img = this.imageCache[path];
-                this.currentImage++;
+                this.playAnimation(this.IMAGES_WALKING);
             }
         }, 80);
     }
 
     animateIdle(){
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_IDLE.length;
-            let path = this.IMAGES_IDLE[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_IDLE);
         }, 100);
     }
 
     animateIdleLong(){
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_IDLE_LONG.length;
-            let path = this.IMAGES_IDLE_LONG[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_IDLE_LONG);
         }, 100);
     }
 
     animateJump(){
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_JUMP.length;
-            let path = this.IMAGES_JUMP[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_JUMP);
         }, 100);
     }
 
     animateHurt(){
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_HURT.length;
-            let path = this.IMAGES_HURT[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_HURT);
         }, 100);
     }
 
     animateDead(){
         setInterval(() => {
-            let i = this.currentImage % this.IMAGES_DEAD.length;
-            let path = this.IMAGES_DEAD[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.IMAGES_DEAD);
         }, 100);
     }
 }
