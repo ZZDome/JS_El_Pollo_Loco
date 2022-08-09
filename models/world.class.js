@@ -1,33 +1,8 @@
 class World{
     air = new Air;
-    bglayer3 = [
-        new Backgroundlayer3(0),
-        new Backgroundlayer3(720*2),
-        new Backgroundlayer3(720*4),
-        new Backgroundlayer3(720*6) 
-    ];
-    bglayer2 = [
-        new Backgroundlayer2(0),
-        new Backgroundlayer2(720*2),
-        new Backgroundlayer2(720*4),
-        new Backgroundlayer2(720*6) 
-    ];
-    bglayer1 = [
-        new Backgroundlayer1(0),
-        new Backgroundlayer1(720*2),
-        new Backgroundlayer1(720*4),
-        new Backgroundlayer1(720*6) 
-    ];
+    level = level1;
     character = new Character;
-    enemies = [
-        new Chicken(),
-        new Chicken(),
-        new Chicken()
-    ];
-    cloud = [
-        new Cloud(),
-        new Cloud(),
-    ];
+    
     canvas;
     ctx;
     keyboard;
@@ -74,11 +49,11 @@ class World{
         this.ctx.translate(this.camaraX, 0);
 
         
-        this.drawObjects(this.bglayer3);
-        this.drawObjects(this.bglayer2);
-        this.drawObjects(this.bglayer1);
-        this.drawObjects(this.cloud);
-        this.drawObjects(this.enemies);
+        this.drawObjects(this.level.bglayer3);
+        this.drawObjects(this.level.bglayer2);
+        this.drawObjects(this.level.bglayer1);
+        this.drawObjects(this.level.clouds);
+        this.drawObjects(this.level.enemies);
         this.drawObject(this.character);    
         
         this.ctx.translate(-this.camaraX, 0);
