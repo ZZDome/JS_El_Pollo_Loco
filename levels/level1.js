@@ -6,8 +6,15 @@ const level1 = new Level(
         new Endboss()
     ],
     [
-        new Cloud(),
-        new Cloud(),
+        new Cloud(0),
+        new Cloud(720),
+        new Cloud(720*2),
+        new Cloud(720*3),
+        new Cloud(720*4),
+        new Cloud(720*5),
+        new Cloud(720*6),
+        new Cloud(720*7),
+        new Cloud(720*8)
     ],
     [
         new Backgroundlayer3(-720*2),
