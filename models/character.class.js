@@ -111,6 +111,8 @@ class Character extends MovableObject {
         setInterval(() => {
             if(this.isDead()){
                 this.playAnimation(this.IMAGES_DEAD);
+            }else if (this.isHurt()) {
+                this.playAnimation(this.IMAGES_HURT);
             }else if(this.isAboveGround()){
                 this.playAnimation(this.IMAGES_JUMP);
             }else if(this.world.keyboard.RIGHT || this.world.keyboard.LEFT){
@@ -138,16 +140,4 @@ class Character extends MovableObject {
         }, 100);
     }
 
-    animateHurt(){
-        setInterval(() => {
-                this.playAnimation(this.IMAGES_HURT);
-        }, 100);
-    }
-
-    animateDead(){
-            setInterval(() => {
-                this.playAnimation(this.IMAGES_DEAD);
-            }, 100);
-        
-    }
 }
