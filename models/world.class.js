@@ -2,6 +2,7 @@ class World {
     air = new Air;
     level = level1;
     character = new Character;
+    statusBar = new StatusBar;
 
     canvas;
     ctx;
@@ -23,6 +24,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if(this.character.isColliding(enemy)){
                     this.character.hit();
+                    this.statusBar.setPercentage(this.character.health);
                 }
             })
         }, 200);
@@ -41,7 +43,7 @@ class World {
                 this.ctx.strokeStyle = 'blue';
                 this.ctx.rect(objects.x, objects.y, objects.width, objects.height);
                 this.ctx.stroke();
-            
+           
         });
     }
 
@@ -81,6 +83,10 @@ class World {
         this.drawObjects(this.level.clouds);
         this.drawObjects(this.level.enemies);
         this.drawObject(this.character);
+
+        this.ctx.translate(-this.camaraX, 0);
+        this.drawObject(this.statusBar);
+        this.ctx.translate(this.camaraX, 0);
 
         this.ctx.translate(-this.camaraX, 0);
 
