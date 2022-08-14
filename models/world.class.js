@@ -15,6 +15,17 @@ class World {
         this.keyboard = keyboard;
         this.draw();
         this.setWorld();
+        this.checkCollisions();
+    }
+
+    checkCollisions(){
+        setInterval(() => {
+            this.level.enemies.forEach((enemy) => {
+                if(this.character.isColliding(enemy)){
+                    this.character.hit();
+                }
+            })
+        }, 200);
     }
 
     setWorld() {
@@ -24,13 +35,13 @@ class World {
     drawObjects(objects) {
         objects.forEach(objects => {
             this.ctx.drawImage(objects.img, objects.x, objects.y, objects.width, objects.height);
-            if (this instanceof Chicken || this instanceof Endboss) {
+           
                 this.ctx.beginPath();
                 this.ctx.lineWidth = '5';
                 this.ctx.strokeStyle = 'blue';
                 this.ctx.rect(objects.x, objects.y, objects.width, objects.height);
                 this.ctx.stroke();
-            }
+            
         });
     }
 
@@ -42,11 +53,13 @@ class World {
             object.x = object.x * -1;
         };
         this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
-        this.ctx.beginPath();
-        this.ctx.lineWidth = '5';
-        this.ctx.strokeStyle = 'blue';
-        this.ctx.rect(object.x, object.y, object.width, object.height);
-        this.ctx.stroke();
+        
+            this.ctx.beginPath();
+            this.ctx.lineWidth = '5';
+            this.ctx.strokeStyle = 'blue';
+            this.ctx.rect(object.x, object.y, object.width, object.height);
+            this.ctx.stroke();
+        
 
         if (object.otherDirection) {
             object.x = object.x * -1;

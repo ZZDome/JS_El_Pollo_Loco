@@ -11,6 +11,27 @@ class MovableObject{
     otherDirection = false;
     speedY = 0;
     accelertion = 1;
+    health = 100;
+    died = false;
+
+    isColliding(mo){
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x &&
+            this.y < mo.y + mo.height;
+    }
+
+    hit(){
+        console.log('colliding', this.health)
+        this.health -= 5;
+        if (this.health < 0){
+            this.health = 0;
+        }
+    }
+
+    isDead(){
+        return this.health == 0;
+    }
 
     applyGravity(){
         setInterval(() => {
