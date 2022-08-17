@@ -26,6 +26,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowableObjects();
+            this.checkHarvestBottle();
         }, 150);
     }
 
@@ -36,6 +37,16 @@ class World {
                     this.healthBar.setPercentageHealth(this.character.health);
                 }
             });
+    }
+
+    checkHarvestBottle(){
+        this.level.bottles.forEach((bottle) => {
+            if(this.character.isColliding(bottle) && this.character.bottles < 100){
+                this.character.bottles += 10;
+                this.bottleBar.setPercentageBottle(this.character.bottles);
+                bottle.x = -200;
+            }
+        });
     }
 
     checkThrowableObjects(){
@@ -101,6 +112,7 @@ class World {
         this.drawObjects(this.level.enemies);
         this.drawObject(this.character);
         this.drawObjects(this.throwableObjects);
+        this.drawObjects(this.level.bottles);
 
         this.ctx.translate(-this.camaraX, 0);
         this.drawObject(this.healthBar);

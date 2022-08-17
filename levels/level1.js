@@ -36,5 +36,9 @@ const level1 = new Level(
         new Backgroundlayer1(720*2),
         new Backgroundlayer1(720*4),
         new Backgroundlayer1(720*6) 
+    ],
+    [
+        new Bottle(),
+        new Bottle()
     ]
 );
