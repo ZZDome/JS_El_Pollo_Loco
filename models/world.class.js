@@ -78,7 +78,14 @@ class World {
 
     drawObjects(objects) {
         objects.forEach(objects => {
-            this.ctx.drawImage(objects.img, objects.x, objects.y, objects.width, objects.height);
+            try {
+                this.ctx.drawImage(objects.img, objects.x, objects.y, objects.width, objects.height);
+            }catch(e){
+                console.warn('Error', e);
+                console.log(objects.img);
+            
+            }
+            
            
                 this.ctx.beginPath();
                 this.ctx.lineWidth = '5';
@@ -124,6 +131,7 @@ class World {
         this.drawObjects(this.level.bglayer1);
         this.drawObjects(this.level.clouds);
         this.drawObjects(this.level.enemies);
+        this.drawObjects(this.level.coins);
         this.drawObject(this.character);
         this.drawObjects(this.throwableObjects);
         this.drawObjects(this.level.bottles);
