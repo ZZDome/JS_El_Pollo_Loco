@@ -4,6 +4,7 @@ class Character extends MovableObject {
     height = 250;
     width = 100;
     speed = 4;
+    speedX = 0;
 
     AUDIO_WALKING = new Audio('audio/walking.mp3');
     AUDIO_JUMP = new Audio('audio/jump.mp3');
@@ -85,8 +86,10 @@ class Character extends MovableObject {
     animateWalk(){
         setInterval(() => {
             this.AUDIO_WALKING.pause();
+            this.speedX = 0;
             if(this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x){
                 this.x += this.speed;
+                this.speedX = this.speed;
                 this.otherDirection = false;
                 if(!this.isAboveGround()){
                     this.AUDIO_WALKING.play();
@@ -95,6 +98,7 @@ class Character extends MovableObject {
 
             if(this.world.keyboard.LEFT && this.x > 0){
                 this.x -= this.speed;
+                this.speedX = this.speed;
                 this.otherDirection = true;
                 if(!this.isAboveGround()){
                     this.AUDIO_WALKING.play();

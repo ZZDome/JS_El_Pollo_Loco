@@ -16,7 +16,6 @@ class MovableObject extends DrawableObject {
     }
 
     hit(){
-        console.log('colliding', this.health)
         this.health -= 5;
         if (this.health < 0){
             this.health = 0;
@@ -45,7 +44,11 @@ class MovableObject extends DrawableObject {
     }
 
     isAboveGround(){
-        return this.y < 175;
+        if(this instanceof ThrowableObject){
+            return true;
+        }else{
+            return this.y < 175;
+        }
     }
 
     playAnimation(images){

@@ -4,6 +4,7 @@ class Keyboard {
     UP = false;
     DOWN = false;
     SPACE = false;
+    D = false;
 
     keyPressed(key){
         if(key.keyCode == 38){
@@ -24,6 +25,10 @@ class Keyboard {
 
         if(key.keyCode == 32){
             this.SPACE = true;
+        }
+
+        if(key.keyCode == 68){
+            this.D = true;
         }
     }
 
@@ -46,6 +51,10 @@ class Keyboard {
 
         if(key.keyCode == 32){
             this.SPACE = false;
+        }
+
+        if(key.keyCode == 68){
+            this.D = false;
         }
     }
 }
