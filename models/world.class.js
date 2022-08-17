@@ -22,40 +22,40 @@ class World {
         this.run();
     }
 
-    run(){
+    run() {
         setInterval(() => {
             this.checkCollisions();
             this.checkCollisionsBottle();
             this.checkThrowableObjects();
             this.checkHarvestBottle();
-
+            this.checkHarvestCoin();
         }, 150);
     }
 
-    checkCollisions(){
-            this.level.enemies.forEach((enemy) => {
-                if(this.character.isColliding(enemy)){
-                    this.character.hit();
-                    this.healthBar.setPercentageHealth(this.character.health);
-                }
-            });
+    checkCollisions() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.healthBar.setPercentageHealth(this.character.health);
+            }
+        });
     }
 
-    checkCollisionsBottle(){
+    checkCollisionsBottle() {
         this.level.enemies.forEach((enemy) => {
             this.throwableObjects.forEach((bottle) => {
-                if(bottle.isColliding(enemy)){
+                if (bottle.isColliding(enemy)) {
                     enemy.killChicken(enemy);
                     bottle.splash = true;
                 }
             })
-            
-        });
-}
 
-    checkHarvestBottle(){
+        });
+    }
+
+    checkHarvestBottle() {
         this.level.bottles.forEach((bottle) => {
-            if(this.character.isColliding(bottle) && this.character.bottles < 100){
+            if (this.character.isColliding(bottle) && this.character.bottles < 100) {
                 this.character.bottles += 10;
                 this.bottleBar.setPercentageBottle(this.character.bottles);
                 bottle.x = -200;
@@ -63,8 +63,18 @@ class World {
         });
     }
 
-    checkThrowableObjects(){
-        if(this.keyboard.D && this.character.bottles > 0){
+    checkHarvestCoin() {
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin) && this.character.coins < 100) {
+                this.character.coins += 10;
+                this.coinBar.setPercentageCoin(this.character.coins);
+                coin.x = -200;
+            }
+        });
+    }
+
+    checkThrowableObjects() {
+        if (this.keyboard.D && this.character.bottles > 0) {
             this.character.bottles -= 10;
             this.bottleBar.setPercentageBottle(this.character.bottles);
             let bottle = new ThrowableObject(this.character.x, this.character.y, this.character.speedX);
@@ -80,19 +90,19 @@ class World {
         objects.forEach(objects => {
             try {
                 this.ctx.drawImage(objects.img, objects.x, objects.y, objects.width, objects.height);
-            }catch(e){
+            } catch (e) {
                 console.warn('Error', e);
                 console.log(objects.img);
-            
+
             }
-            
-           
-                this.ctx.beginPath();
-                this.ctx.lineWidth = '5';
-                this.ctx.strokeStyle = 'blue';
-                this.ctx.rect(objects.x, objects.y, objects.width, objects.height);
-                this.ctx.stroke();
-           
+
+
+            this.ctx.beginPath();
+            this.ctx.lineWidth = '5';
+            this.ctx.strokeStyle = 'blue';
+            this.ctx.rect(objects.x, objects.y, objects.width, objects.height);
+            this.ctx.stroke();
+
         });
     }
 
@@ -104,13 +114,13 @@ class World {
             object.x = object.x * -1;
         };
         this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
-        
-            this.ctx.beginPath();
-            this.ctx.lineWidth = '5';
-            this.ctx.strokeStyle = 'blue';
-            this.ctx.rect(object.x, object.y, object.width, object.height);
-            this.ctx.stroke();
-        
+
+        this.ctx.beginPath();
+        this.ctx.lineWidth = '5';
+        this.ctx.strokeStyle = 'blue';
+        this.ctx.rect(object.x, object.y, object.width, object.height);
+        this.ctx.stroke();
+
 
         if (object.otherDirection) {
             object.x = object.x * -1;
