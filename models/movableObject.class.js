@@ -28,6 +28,10 @@ class MovableObject extends DrawableObject {
         return this.health == 0;
     }
 
+    killChicken(enemy){
+        enemy.isDead = true;
+    }
+
     isHurt(){
         let timePassed = new Date().getTime() - this.lastHit;
         timePassed = timePassed / 1000;
@@ -45,7 +49,7 @@ class MovableObject extends DrawableObject {
 
     isAboveGround(){
         if(this instanceof ThrowableObject){
-            return true;
+            return this.y < 380;
         }else{
             return this.y < 175;
         }

@@ -25,8 +25,10 @@ class World {
     run(){
         setInterval(() => {
             this.checkCollisions();
+            this.checkCollisionsBottle();
             this.checkThrowableObjects();
             this.checkHarvestBottle();
+
         }, 150);
     }
 
@@ -38,6 +40,18 @@ class World {
                 }
             });
     }
+
+    checkCollisionsBottle(){
+        this.level.enemies.forEach((enemy) => {
+            this.throwableObjects.forEach((bottle) => {
+                if(bottle.isColliding(enemy)){
+                    enemy.killChicken(enemy);
+                    bottle.splash = true;
+                }
+            })
+            
+        });
+}
 
     checkHarvestBottle(){
         this.level.bottles.forEach((bottle) => {
