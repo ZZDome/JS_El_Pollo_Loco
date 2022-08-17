@@ -2,7 +2,9 @@ class World {
     air = new Air;
     level = level1;
     character = new Character;
-    statusBar = new StatusBar;
+    healthBar = new StatusBar('health');
+    bottleBar = new StatusBar('bottle');
+    coinBar = new StatusBar('coin');
     throwableObjects = [];
 
     canvas;
@@ -31,7 +33,7 @@ class World {
             this.level.enemies.forEach((enemy) => {
                 if(this.character.isColliding(enemy)){
                     this.character.hit();
-                    this.statusBar.setPercentage(this.character.health);
+                    this.healthBar.setPercentageHealth(this.character.health);
                 }
             });
     }
@@ -99,7 +101,9 @@ class World {
         this.drawObjects(this.throwableObjects);
 
         this.ctx.translate(-this.camaraX, 0);
-        this.drawObject(this.statusBar);
+        this.drawObject(this.healthBar);
+        this.drawObject(this.bottleBar);
+        this.drawObject(this.coinBar);
         this.ctx.translate(this.camaraX, 0);
 
         this.ctx.translate(-this.camaraX, 0);
