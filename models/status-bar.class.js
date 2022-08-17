@@ -54,12 +54,12 @@ class StatusBar extends DrawableObject {
 
     initBottleBar(){
         this.y = 30;
-        this.setPercentageBottle(100);
+        this.setPercentageBottle(20);
     }
 
     initCoinBar(){
         this.y = 60;
-        this.setPercentageCoin(100);
+        this.setPercentageCoin(0);
     }
 
     setPercentageHealth(percentage) {
@@ -85,11 +85,11 @@ class StatusBar extends DrawableObject {
             return 5;
         } else if (this.percentage > 80) {
             return 4;
-        } else if (this.percentage > 60) {
+        } else if (this.percentage > 50) {
             return 3;
-        } else if (this.percentage > 40) {
-            return 2;
         } else if (this.percentage > 20) {
+            return 2;
+        } else if (this.percentage > 0) {
             return 1;
         }else{
             return 0;
