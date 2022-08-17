@@ -36,7 +36,7 @@ class ThrowableObject extends MovableObject {
         this.y = y + this.offsetY;
         this.move(charSpeedX);
         setInterval(() => {
-            if(this.splash){
+            if(this.splash || !this.isAboveGround()){
                 this.playAnimation(this.IMAGES_SPLASH);
             }else{
                 this.playAnimation(this.IMAGES_THROW);
@@ -47,7 +47,7 @@ class ThrowableObject extends MovableObject {
     move(charSpeedX){
         this.applyGravity();
         setInterval(() => {
-            if(!this.splash){
+            if(!this.splash && this.isAboveGround()){
                 this.x += this.speedX + charSpeedX;
             }else{
                 setTimeout(() => {
