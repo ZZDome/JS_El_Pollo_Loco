@@ -35,7 +35,7 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
+                this.character.hit(5);
                 this.healthBar.setPercentageHealth(this.character.health);
             }
         });
@@ -45,7 +45,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             this.throwableObjects.forEach((bottle) => {
                 if (bottle.isColliding(enemy)) {
-                    enemy.killChicken(enemy);
+                    enemy.hit(100);
                     bottle.splash = true;
                 }
             })
