@@ -100,7 +100,7 @@ class World {
             this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
-            this.ctx.rect(objects.x, objects.y, objects.width, objects.height);
+            this.ctx.rect(objects.x + objects.offsetX, objects.y + objects.offsetY, objects.width - objects.offsetX, objects.height - objects.offsetY);
             this.ctx.stroke();
 
         });
@@ -118,7 +118,7 @@ class World {
         this.ctx.beginPath();
         this.ctx.lineWidth = '5';
         this.ctx.strokeStyle = 'blue';
-        this.ctx.rect(object.x, object.y, object.width, object.height);
+        this.ctx.rect(object.x + object.offsetX, object.y + object.offsetY, object.width - object.offsetX, object.height - object.offsetY);
         this.ctx.stroke();
 
 

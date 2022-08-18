@@ -1,8 +1,8 @@
 class ThrowableObject extends MovableObject {
     width = 50;
     height = 50;
-    offsetX = 30;
-    offsetY = 100;
+    hitOffsetX = 30;
+    hitOffsetY = 100;
     speedX = 5;
     speedY = 10;
     splash = false;
@@ -32,8 +32,8 @@ class ThrowableObject extends MovableObject {
     }
 
     throw(x, y, charSpeedX){
-        this.x = x + this.offsetX;
-        this.y = y + this.offsetY;
+        this.x = x + this.hitOffsetX;
+        this.y = y + this.hitOffsetY;
         this.move(charSpeedX);
         setInterval(() => {
             if(this.splash || !this.isAboveGround()){
