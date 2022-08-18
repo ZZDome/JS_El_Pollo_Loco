@@ -7,6 +7,8 @@ class ThrowableObject extends MovableObject {
     speedY = 10;
     splash = false;
 
+    AUDIO_SMASH = new Audio('audio/bottle-smash.mp3');
+    
 
     IMAGES_THROW = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
@@ -38,10 +40,18 @@ class ThrowableObject extends MovableObject {
         setInterval(() => {
             if(this.splash || !this.isAboveGround()){
                 this.playAnimation(this.IMAGES_SPLASH);
+                this.playSmash();
             }else{
                 this.playAnimation(this.IMAGES_THROW);
             }
         }, 1000 / 10);
+    }
+
+    playSmash(){
+        this.AUDIO_SMASH.play();
+        setTimeout(() => {
+            this.AUDIO_SMASH.pause();
+        }, 800);
     }
 
     move(charSpeedX){

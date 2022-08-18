@@ -6,6 +6,7 @@ class Coin extends MovableObject {
     offsetX = 50;
     offsetY = 50;
 
+    AUDIO_COIN = new Audio('audio/coin.mp3');
 
     IMAGES = [
         'img/8_coin/coin_1.png',        
@@ -22,5 +23,12 @@ class Coin extends MovableObject {
         setInterval(() => {
             this.playAnimation(this.IMAGES)
         }, 1000 / 5);
+    }
+
+    play(){
+        this.AUDIO_COIN.play();
+        setTimeout(() => {
+            this.AUDIO_COIN.pause();
+        }, 2000);
     }
 }

@@ -5,6 +5,7 @@ class Bottle extends DrawableObject {
     width = 50;
     height = 50;
 
+    AUDIO_BOTTLEPICK = new Audio('audio/bottle-pick.mp3');
 
     IMAGES = [
         'img/6_salsa_bottle/1_salsa_bottle_on_ground.png'
@@ -12,5 +13,12 @@ class Bottle extends DrawableObject {
 
     constructor(){
         super().loadImage('img/6_salsa_bottle/1_salsa_bottle_on_ground.png');
+    }
+
+    play(){
+        this.AUDIO_BOTTLEPICK.play();
+        setTimeout(() => {
+            this.AUDIO_BOTTLEPICK.pause();
+        }, 2000);
     }
 }

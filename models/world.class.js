@@ -6,6 +6,7 @@ class World {
     bottleBar = new StatusBar('bottle');
     coinBar = new StatusBar('coin');
     throwableObjects = [];
+    shootable = true;
 
     canvas;
     ctx;
@@ -30,11 +31,16 @@ class World {
             this.checkHarvestBottle();
             this.checkHarvestCoin();
         }, 150);
+
+    }
+
+    checkSleeping(){
+
     }
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isColliding(enemy) && !enemy.isDead()) {
                 this.character.hit(5);
                 this.healthBar.setPercentageHealth(this.character.health);
             }
@@ -49,7 +55,6 @@ class World {
                     bottle.splash = true;
                 }
             })
-
         });
     }
 
@@ -59,6 +64,7 @@ class World {
                 this.character.bottles += 10;
                 this.bottleBar.setPercentageBottle(this.character.bottles);
                 bottle.x = -200;
+                bottle.play();
             }
         });
     }
@@ -69,16 +75,23 @@ class World {
                 this.character.coins += 10;
                 this.coinBar.setPercentageCoin(this.character.coins);
                 coin.x = -200;
+                coin.play();
             }
         });
     }
 
     checkThrowableObjects() {
-        if (this.keyboard.D && this.character.bottles > 0) {
-            this.character.bottles -= 10;
-            this.bottleBar.setPercentageBottle(this.character.bottles);
-            let bottle = new ThrowableObject(this.character.x, this.character.y, this.character.speedX);
-            this.throwableObjects.push(bottle);
+        if (this.keyboard.SPACE && this.character.bottles > 0) {
+            setTimeout(() => {
+                this.shootable = true;
+            }, 700);
+            if (this.shootable) {
+                this.character.bottles -= 10;
+                this.bottleBar.setPercentageBottle(this.character.bottles);
+                let bottle = new ThrowableObject(this.character.x, this.character.y, this.character.speedX);
+                this.throwableObjects.push(bottle);
+                this.shootable = false;
+            }
         }
     }
 
@@ -97,11 +110,11 @@ class World {
             }
 
 
-            this.ctx.beginPath();
+            /* this.ctx.beginPath();
             this.ctx.lineWidth = '5';
             this.ctx.strokeStyle = 'blue';
             this.ctx.rect(objects.x + objects.offsetX, objects.y + objects.offsetY, objects.width - objects.offsetX, objects.height - objects.offsetY);
-            this.ctx.stroke();
+            this.ctx.stroke(); */
 
         });
     }
@@ -115,11 +128,11 @@ class World {
         };
         this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
 
-        this.ctx.beginPath();
+        /* this.ctx.beginPath();
         this.ctx.lineWidth = '5';
         this.ctx.strokeStyle = 'blue';
         this.ctx.rect(object.x + object.offsetX, object.y + object.offsetY, object.width - object.offsetX, object.height - object.offsetY);
-        this.ctx.stroke();
+        this.ctx.stroke(); */
 
 
         if (object.otherDirection) {
