@@ -15,8 +15,8 @@ class MovableObject extends DrawableObject {
             (this.y + this.offsetY) < (mo.y + mo.offsetY) + (mo.height - mo.offsetY);
     }
 
-    hit(){
-        this.health -= 5;
+    hit(lifePoints){
+        this.health -= lifePoints;
         if (this.health < 0){
             this.health = 0;
         }else{
@@ -26,10 +26,6 @@ class MovableObject extends DrawableObject {
 
     isDead(){
         return this.health == 0;
-    }
-
-    killChicken(enemy){
-        enemy.isDead = true;
     }
 
     isHurt(){
