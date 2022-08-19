@@ -9,5 +9,7 @@ class Backgroundlayer3 extends MovableObject {
         this.x = x;
     }
 
+    
+
 
 }

@@ -21,6 +21,7 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.paralaxeBG();
     }
 
     run() {
@@ -31,11 +32,26 @@ class World {
             this.checkHarvestBottle();
             this.checkHarvestCoin();
         }, 150);
-
     }
 
-    checkSleeping(){
-
+    paralaxeBG(){
+        setInterval(() => {
+            if(this.keyboard.RIGHT){
+                this.level.bglayer3.forEach(bg => {
+                    bg.x += 2;
+                });
+                this.level.bglayer2.forEach(bg => {
+                    bg.x += 1;
+                });
+            }else if(this.keyboard.LEFT){
+                this.level.bglayer3.forEach(bg => {
+                    bg.x -= 2;
+                });
+                this.level.bglayer2.forEach(bg => {
+                    bg.x -= 1;
+                });
+            }
+        }, 1000 / 60);
     }
 
     checkCollisions() {
