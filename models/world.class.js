@@ -36,14 +36,14 @@ class World {
 
     paralaxeBG(){
         setInterval(() => {
-            if(this.keyboard.RIGHT){
+            if(this.keyboard.RIGHT && this.character.x < this.level.level_end_x){
                 this.level.bglayer3.forEach(bg => {
                     bg.x += 2;
                 });
                 this.level.bglayer2.forEach(bg => {
                     bg.x += 1;
                 });
-            }else if(this.keyboard.LEFT){
+            }else if(this.keyboard.LEFT && this.character.x > 0){
                 this.level.bglayer3.forEach(bg => {
                     bg.x -= 2;
                 });
