@@ -7,6 +7,7 @@ class MovableObject extends DrawableObject {
     health = 100;
     died = false;
     lastHit = 0;
+    isAlive = true;
 
     isColliding(mo){
         return (this.x + this.offsetX) + (this.width - this.offsetX) > (mo.x + mo.offsetX) &&

@@ -38,7 +38,7 @@ class ThrowableObject extends MovableObject {
         this.y = y + this.hitOffsetY;
         this.move(charSpeedX);
         setInterval(() => {
-            if(this.splash || !this.isAboveGround()){
+            if(this.splash && this.isAlive || !this.isAboveGround() && this.isAlive){
                 this.playAnimation(this.IMAGES_SPLASH);
                 this.playSmash();
             }else{
@@ -50,6 +50,7 @@ class ThrowableObject extends MovableObject {
     playSmash(){
         this.AUDIO_SMASH.play();
         setTimeout(() => {
+            this.isAlive = false;
             this.AUDIO_SMASH.pause();
         }, 800);
     }
