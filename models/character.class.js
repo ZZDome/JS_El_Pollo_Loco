@@ -9,6 +9,7 @@ class Character extends MovableObject {
     coins = 0;
     bottles = 20;
     sleep = false;
+    jumping = false;
 
     AUDIO_WALKING = new Audio('audio/walking.mp3');
     AUDIO_JUMP = new Audio('audio/jump.mp3');
@@ -111,17 +112,24 @@ class Character extends MovableObject {
                 }
             };
 
-            if (this.world.keyboard.UP && !this.isAboveGround()) {
+            if (this.world.keyboard.UP && !this.isAboveGround() && !this.jumping) {
+                this.jumping = true;
                 this.speedY = 20;
                 this.AUDIO_JUMP.play();
             }
+
+            if(!this.isAboveGround()){
+                this.jumping = false;
+            }else{
+                this.jumping = true;
+            }
+
             this.world.camaraX = -this.x + 100;
         }, 1000 / 60);
 
         setInterval(() => {
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
-            } else if (this.isHurt()) {
+            console.log(this.jumping)
+            if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.world.keyboard.RIGHT && !this.isAboveGround() || this.world.keyboard.LEFT && !this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_WALKING);
@@ -129,13 +137,20 @@ class Character extends MovableObject {
         }, 80);
 
         setInterval(() => {
+            if (this.isDead()) {
+                this.isAlive = false;
+                this.playAnimation(this.IMAGES_DEAD);
+            }
+        }, 100);
+
+        setInterval(() => {
             if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMP);
             }
-        }, 250);
+        }, 300);
 
         setInterval(() => {
-            if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && !this.world.keyboard.SPACE && !this.world.keyboard.DOWN) {
+            if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && !this.world.keyboard.SPACE && !this.world.keyboard.DOWN && this.isAlive && !this.jumping) {
                 if (!this.sleep) {
                     this.playAnimation(this.IMAGES_IDLE);
                 }
