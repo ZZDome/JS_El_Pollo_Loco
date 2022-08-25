@@ -128,7 +128,6 @@ class Character extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            console.log(this.jumping)
             if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
             } else if (this.world.keyboard.RIGHT && !this.isAboveGround() || this.world.keyboard.LEFT && !this.isAboveGround()) {

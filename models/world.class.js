@@ -7,6 +7,7 @@ class World {
     coinBar = new StatusBar('coin');
     throwableObjects = [];
     shootable = true;
+    endbossSpawned = false;
 
     canvas;
     ctx;
@@ -31,7 +32,18 @@ class World {
             this.checkThrowableObjects();
             this.checkHarvestBottle();
             this.checkHarvestCoin();
+            this.checkEndbossSpawn();
         }, 150);
+    }
+
+    checkEndbossSpawn(){
+        if(this.character.x > 1800 && !this.endbossSpawned){
+            this.endbossSpawned = true;
+            let endboss = this.level.enemies.length - 1;
+            endboss = this.level.enemies[endboss];
+            endboss.alert = true;
+            endboss.alerted();
+        }
     }
 
     paralaxeBG(){
@@ -66,7 +78,7 @@ class World {
     checkCollisionsBottle() {
         this.level.enemies.forEach((enemy) => {
             this.throwableObjects.forEach((bottle) => {
-                if (bottle.isColliding(enemy)) {
+                if (bottle.isColliding(enemy) && !bottle.splash) {
                     enemy.hit(100);
                     bottle.splash = true;
                 }
