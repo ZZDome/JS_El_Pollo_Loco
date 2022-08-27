@@ -12,10 +12,12 @@ class MovableObject extends DrawableObject {
     fall = false;
 
     isColliding(mo){
-        return (this.x + this.offsetX) + (this.width - this.offsetX) > (mo.x + mo.offsetX) &&
+        if(this.isAlive && mo.isAlive || mo instanceof Bottle){
+            return (this.x + this.offsetX) + (this.width - this.offsetX) > (mo.x + mo.offsetX) &&
             (this.y + this.offsetY) + (this.height - this.offsetY) > (mo.y + mo.offsetY) &&
             (this.x + this.offsetX) < (mo.x + mo.offsetX) + (mo.width - mo.offsetX) &&
             (this.y + this.offsetY) < (mo.y + mo.offsetY) + (mo.height - mo.offsetY);
+        }
     }
 
     hit(lifePoints){

@@ -27,9 +27,7 @@ class Chicken extends MovableObject {
     animate(){
         setInterval(() => {
             if(this.isDead()){
-                setTimeout(() => {
-                    this.x = -200;
-                }, 1500);
+                this.isAlive = false;
             }else{
                 this.x -= 0.40 * this.speed;
             }
