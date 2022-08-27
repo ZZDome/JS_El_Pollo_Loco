@@ -52,6 +52,7 @@ class Endboss extends MovableObject {
         this.loadImages(this.IMAGES_DEAD);
         this.loadImages(this.IMAGES_ALERT);
         this.loadImages(this.IMAGES_ATTACK);
+        this.applyGravity();
         this.animateWalk();
         this.animate();
     }
@@ -66,15 +67,19 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if(!this.alert && this.isAlive){
                 this.x -= 0.40 * this.speed;
+            }else if(!this.isAlive && !this.isAboveGround()){
+                this.x += 20;
+                this.speedY = 20;
+                this.fall = true;
             }
         }, 1000 / 60);
     }
 
     animateWalk(){
+        let imageDeadIndex = 0;
         setInterval(() => {
-            if(!this.alert && this.isAlive){
+            if(!this.alert && this.isAlive && !this.isHurt()){
                 this.playAnimation(this.IMAGES_WALKING);
-                console.log(this.health)
             }
         }, 150);
 
@@ -87,7 +92,18 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if(this.isDead()){
             this.isAlive = false;
-            this.playAnimation(this.IMAGES_DEAD);
+            if(imageDeadIndex < 3){
+                this.playAnimation(this.IMAGES_DEAD);
+            }else{
+                this.loadImage(this.IMAGES_DEAD[2]);
+            }
+            imageDeadIndex++
+        }
+        }, 150);
+
+        setInterval(() => {
+            if(this.isHurt()){
+            this.playAnimation(this.IMAGES_HURT);
         }
         }, 150);
     }

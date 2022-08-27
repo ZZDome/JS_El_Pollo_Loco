@@ -9,6 +9,7 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
     isAlive = true;
     alert = false;
+    fall = false;
 
     isColliding(mo){
         return (this.x + this.offsetX) + (this.width - this.offsetX) > (mo.x + mo.offsetX) &&
@@ -38,7 +39,7 @@ class MovableObject extends DrawableObject {
 
     applyGravity(){
         setInterval(() => {
-            if(this.isAboveGround() || this.speedY > 0){
+            if(this.isAboveGround() || this.speedY > 0 || !this.isAlive){
                 this.y -= this.speedY;
                 this.speedY -= this.accelertion; 
             }
@@ -46,8 +47,12 @@ class MovableObject extends DrawableObject {
     }
 
     isAboveGround(){
-        if(this instanceof ThrowableObject){
+        if(this instanceof Endboss && !this.fall){
+            return this.y < 0;
+        }else if(this instanceof ThrowableObject){
             return this.y < 380;
+        }else if(this.fall){
+            return this.y < 2000;
         }else{
             return this.y < 175;
         }
