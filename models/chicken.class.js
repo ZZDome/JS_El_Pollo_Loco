@@ -26,7 +26,7 @@ class Chicken extends MovableObject {
         this.animateWalk();
         this.animate();
         this.AUDIO_HURT.volume = 0.1;
-        this.AUDIO_CHICKENBG.volume = 0.02;
+        this.AUDIO_CHICKENBG.volume = 0.01;
         this.AUDIO_CHICKENBG.loop = true;
         this.AUDIO_CHICKENBG.play();
     }
