@@ -5,7 +5,7 @@ class CloudLayer2 extends MovableObject {
     width = 250;
 
     constructor(x){
-        super().loadImage('../img/5_background/layers/4_clouds/1.png')
+        super().loadImage('../img/5_background/layers/4_clouds/2.png')
         this.x = x;
         this.animate();
     }
