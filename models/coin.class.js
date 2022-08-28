@@ -7,6 +7,7 @@ class Coin extends MovableObject {
     offsetY = 50;
 
     AUDIO_COIN = new Audio('audio/coin.mp3');
+    
 
     IMAGES = [
         'img/8_coin/coin_1.png',        
@@ -17,6 +18,7 @@ class Coin extends MovableObject {
         super().loadImage('img/8_coin/coin_2.png');
         this.loadImages(this.IMAGES);
         this.animate();
+        this.AUDIO_COIN.volume = 0.3;
     }
 
     animate(){

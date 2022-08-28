@@ -13,6 +13,8 @@ class Character extends MovableObject {
 
     AUDIO_WALKING = new Audio('audio/walking.mp3');
     AUDIO_JUMP = new Audio('audio/jump.mp3');
+    AUDIO_BACKGROUND = new Audio('audio/background.mp3');
+    AUDIO_HURT = new Audio('audio/pepe-hurt.mp3');
 
 
     IMAGES_WALKING = [
@@ -88,6 +90,10 @@ class Character extends MovableObject {
         this.loadImages(this.IMAGES_IDLE_LONG);
         this.applyGravity();
         this.animateWalk();
+        this.AUDIO_JUMP.volume = 0.5;
+        this.AUDIO_BACKGROUND.volume = 0.3;
+        this.AUDIO_BACKGROUND.loop = true;
+        this.AUDIO_BACKGROUND.play();
     }
 
     animateWalk() {
@@ -130,6 +136,7 @@ class Character extends MovableObject {
         setInterval(() => {
             if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
+                this.AUDIO_HURT.play();
             } else if (this.world.keyboard.RIGHT && !this.isAboveGround() || this.world.keyboard.LEFT && !this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_WALKING);
             }

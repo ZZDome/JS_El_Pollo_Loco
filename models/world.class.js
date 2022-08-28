@@ -14,8 +14,9 @@ class World {
     keyboard;
     camaraX = 0;
 
-    constructor(canvas, keyboard) {
+    
 
+    constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
