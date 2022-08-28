@@ -56,11 +56,23 @@ class World {
                 this.level.bglayer2.forEach(bg => {
                     bg.x += 1;
                 });
+                this.level.cloudsLayer2.forEach(bg => {
+                    bg.x += 2;
+                });
+                this.level.clouds.forEach(bg => {
+                    bg.x += 1;
+                });
             }else if(this.keyboard.LEFT && this.character.x > 0){
                 this.level.bglayer3.forEach(bg => {
                     bg.x -= 2;
                 });
                 this.level.bglayer2.forEach(bg => {
+                    bg.x -= 1;
+                });
+                this.level.cloudsLayer2.forEach(bg => {
+                    bg.x -= 2;
+                });
+                this.level.clouds.forEach(bg => {
                     bg.x -= 1;
                 });
             }
@@ -179,9 +191,11 @@ class World {
 
 
         this.drawObjects(this.level.bglayer3);
+        this.drawObjects(this.level.cloudsLayer2);
         this.drawObjects(this.level.bglayer2);
-        this.drawObjects(this.level.bglayer1);
         this.drawObjects(this.level.clouds);
+        this.drawObjects(this.level.bglayer1);
+        
         this.drawObjects(this.level.enemies);
         this.drawObjects(this.level.coins);
         this.drawObject(this.character);

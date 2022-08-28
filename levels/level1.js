@@ -6,6 +6,12 @@ const level1 = new Level(
         new Chicken(),
         new Chicken(),
         new Chicken(),
+        new SmallChicken(),
+        new SmallChicken(),
+        new SmallChicken(),
+        new SmallChicken(),
+        new SmallChicken(),
+        new SmallChicken(),
         new Endboss()
     ],
     [
@@ -18,6 +24,17 @@ const level1 = new Level(
         new Cloud(720*6),
         new Cloud(720*7),
         new Cloud(720*8)
+    ],
+    [
+        new CloudLayer2(0),
+        new CloudLayer2(720),
+        new CloudLayer2(720*2),
+        new CloudLayer2(720*3),
+        new CloudLayer2(720*4),
+        new CloudLayer2(720*5),
+        new CloudLayer2(720*6),
+        new CloudLayer2(720*7),
+        new CloudLayer2(720*8)
     ],
     [
         new Backgroundlayer3(-720*2),
@@ -41,6 +58,10 @@ const level1 = new Level(
         new Backgroundlayer1(720*6) 
     ],
     [
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
+        new Bottle(),
         new Bottle(),
         new Bottle(),
         new Bottle(),
