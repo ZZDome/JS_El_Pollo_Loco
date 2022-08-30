@@ -4,6 +4,8 @@ class Endboss extends MovableObject {
     height = 400;
     width = 250;
     health = 500;
+    fighting = false;
+    attacking = false;
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -45,7 +47,7 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/4_hurt/G23.png'
     ];
 
-    constructor(){
+    constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
         this.loadImages(this.IMAGES_HURT);
@@ -57,54 +59,73 @@ class Endboss extends MovableObject {
         this.animate();
     }
 
-    alerted(){
+    alerted() {
         setTimeout(() => {
             this.alert = false;
-        }, 	2000);
-        }
+            this.fight();
+        }, 2000);
+    }
 
-    animate(){
+    fight() {
+        this.fighting = true;
         setInterval(() => {
-            if(!this.alert && this.isAlive){
+            this.attacking = true;
+            this.speedY = 15;
+        }, 3000 * Math.random() + 3000);
+    }
+
+    pushBack(value) {
+        setInterval(() => {
+            this.x += value;
+        }, 1000 / 60);
+    }
+
+    animate() {
+        setInterval(() => {
+            if (!this.alert && this.isAlive && this.fighting && !this.isAboveGround()) {
                 this.x -= 0.40 * this.speed;
-            }else if(!this.isAlive && !this.isAboveGround()){
-                this.x += 20;
+            } else if (!this.isAlive && !this.isAboveGround() && this.fighting) {
+                this.pushBack(2);
                 this.speedY = 20;
                 this.fall = true;
+            }else if(this.attacking && this.fighting && this.isAlive && this.isAboveGround()){
+                this.x -= 5;
+            }else if (this.isAlive && this.fighting && !this.attacking && this.isAboveGround()) {
+                this.x += 5;
             }
         }, 1000 / 60);
     }
 
-    animateWalk(){
+    animateWalk() {
         let imageDeadIndex = 0;
         setInterval(() => {
-            if(!this.alert && this.isAlive && !this.isHurt()){
+            if (!this.alert && this.isAlive && !this.isHurt() && this.fighting) {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 150);
 
         setInterval(() => {
-            if(this.alert){
-            this.playAnimation(this.IMAGES_ALERT);
-        }
-        }, 150);
-
-        setInterval(() => {
-            if(this.isDead()){
-            this.isAlive = false;
-            if(imageDeadIndex < 3){
-                this.playAnimation(this.IMAGES_DEAD);
-            }else{
-                this.loadImage(this.IMAGES_DEAD[2]);
+            if (this.alert) {
+                this.playAnimation(this.IMAGES_ALERT);
             }
-            imageDeadIndex++
-        }
         }, 150);
 
         setInterval(() => {
-            if(this.isHurt()){
-            this.playAnimation(this.IMAGES_HURT);
-        }
+            if (this.isDead() && this.fighting) {
+                this.isAlive = false;
+                if (imageDeadIndex < 3) {
+                    this.playAnimation(this.IMAGES_DEAD);
+                } else {
+                    this.loadImage(this.IMAGES_DEAD[2]);
+                }
+                imageDeadIndex++
+            }
+        }, 150);
+
+        setInterval(() => {
+            if (this.isHurt() && this.fighting) {
+                this.playAnimation(this.IMAGES_HURT);
+            }
         }, 150);
     }
 

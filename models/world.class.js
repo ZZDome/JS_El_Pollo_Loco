@@ -84,6 +84,10 @@ class World {
             if (this.character.isColliding(enemy) && !enemy.isDead()) {
                 this.character.hit(5);
                 this.healthBar.setPercentageHealth(this.character.health);
+                if(enemy instanceof Endboss){
+                    enemy.speedY = 15;
+                    enemy.attacking = false;
+                }
             }
         });
     }
