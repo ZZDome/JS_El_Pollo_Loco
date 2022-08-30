@@ -69,8 +69,10 @@ class Endboss extends MovableObject {
     fight() {
         this.fighting = true;
         setInterval(() => {
-            this.attacking = true;
-            this.speedY = 15;
+            if (!this.isDead()) {
+                this.attacking = true;
+                this.speedY = 15;
+            }
         }, 3000 * Math.random() + 3000);
     }
 
@@ -88,9 +90,9 @@ class Endboss extends MovableObject {
                 this.pushBack(2);
                 this.speedY = 20;
                 this.fall = true;
-            }else if(this.attacking && this.fighting && this.isAlive && this.isAboveGround()){
+            } else if (this.attacking && this.fighting && this.isAlive && this.isAboveGround()) {
                 this.x -= 5;
-            }else if (this.isAlive && this.fighting && !this.attacking && this.isAboveGround()) {
+            } else if (this.isAlive && this.fighting && !this.attacking && this.isAboveGround()) {
                 this.x += 5;
             }
         }, 1000 / 60);
@@ -99,8 +101,14 @@ class Endboss extends MovableObject {
     animateWalk() {
         let imageDeadIndex = 0;
         setInterval(() => {
-            if (!this.alert && this.isAlive && !this.isHurt() && this.fighting) {
+            if (!this.alert && this.isAlive && !this.isHurt() && this.fighting && !this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_WALKING);
+            }
+        }, 150);
+
+        setInterval(() => {
+            if (this.attacking && !this.isHurt() && this.isAlive && this.fighting && this.isAboveGround()) {
+                this.playAnimation(this.IMAGES_ATTACK);
             }
         }, 150);
 

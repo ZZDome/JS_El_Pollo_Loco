@@ -14,7 +14,7 @@ class World {
     keyboard;
     camaraX = 0;
 
-    
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -37,8 +37,8 @@ class World {
         }, 150);
     }
 
-    checkEndbossSpawn(){
-        if(this.character.x > 1800 && !this.endbossSpawned){
+    checkEndbossSpawn() {
+        if (this.character.x > 1800 && !this.endbossSpawned) {
             this.endbossSpawned = true;
             let endboss = this.level.enemies.length - 1;
             endboss = this.level.enemies[endboss];
@@ -47,9 +47,9 @@ class World {
         }
     }
 
-    paralaxeBG(){
+    paralaxeBG() {
         setInterval(() => {
-            if(this.keyboard.RIGHT && this.character.x < this.level.level_end_x){
+            if (this.keyboard.RIGHT && this.character.x < this.level.level_end_x) {
                 this.level.bglayer3.forEach(bg => {
                     bg.x += 2;
                 });
@@ -62,7 +62,7 @@ class World {
                 this.level.clouds.forEach(bg => {
                     bg.x += 1;
                 });
-            }else if(this.keyboard.LEFT && this.character.x > 0){
+            } else if (this.keyboard.LEFT && this.character.x > 0) {
                 this.level.bglayer3.forEach(bg => {
                     bg.x -= 2;
                 });
@@ -84,7 +84,7 @@ class World {
             if (this.character.isColliding(enemy) && !enemy.isDead()) {
                 this.character.hit(5);
                 this.healthBar.setPercentageHealth(this.character.health);
-                if(enemy instanceof Endboss){
+                if (enemy instanceof Endboss) {
                     enemy.speedY = 15;
                     enemy.attacking = false;
                 }
@@ -199,7 +199,7 @@ class World {
         this.drawObjects(this.level.bglayer2);
         this.drawObjects(this.level.clouds);
         this.drawObjects(this.level.bglayer1);
-        
+
         this.drawObjects(this.level.enemies);
         this.drawObjects(this.level.coins);
         this.drawObject(this.character);
