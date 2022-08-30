@@ -5,6 +5,7 @@ class World {
     healthBar = new StatusBar('health');
     bottleBar = new StatusBar('bottle');
     coinBar = new StatusBar('coin');
+    endbossBar = new StatusBar('endboss');
     throwableObjects = [];
     shootable = true;
     endbossSpawned = false;
@@ -210,6 +211,7 @@ class World {
         this.drawObject(this.healthBar);
         this.drawObject(this.bottleBar);
         this.drawObject(this.coinBar);
+        this.drawObject(this.endbossBar);
         this.ctx.translate(this.camaraX, 0);
 
         this.ctx.translate(-this.camaraX, 0);
