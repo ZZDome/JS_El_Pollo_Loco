@@ -5,6 +5,7 @@ class SmallChicken extends MovableObject {
     offsetY = 20;
     height = 50;
     width = 50;
+    health = 10;
 
     AUDIO_HURT = new Audio('audio/chicken-scream.mp3');
 

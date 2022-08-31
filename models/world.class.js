@@ -97,8 +97,11 @@ class World {
         this.level.enemies.forEach((enemy) => {
             this.throwableObjects.forEach((bottle) => {
                 if (bottle.isColliding(enemy) && !bottle.splash) {
-                    enemy.hit(100);
+                    enemy.hit(20);
                     bottle.splash = true;
+                    if(enemy instanceof Endboss){
+                        this.endbossBar.setPercentageEndboss(enemy.health);
+                    }
                 }
             })
         });
