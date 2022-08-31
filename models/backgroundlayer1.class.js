@@ -5,7 +5,7 @@ class Backgroundlayer1 extends MovableObject {
     width = 720 * 2;
 
     constructor(x){
-        super().loadImage('../img/5_background/layers/1_first_layer/full.png');
+        super().loadImage('img/5_background/layers/1_first_layer/full.png');
         this.x = x;
     }
 }

@@ -6,7 +6,7 @@ class Air{
     img;
 
     constructor(){
-        this.loadImage('../img/5_background/layers/air.png')
+        this.loadImage('img/5_background/layers/air.png')
     }
 
     loadImage(path){
