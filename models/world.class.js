@@ -1,11 +1,11 @@
 class World {
-    air = new Air;
-    level = level1;
-    character = new Character;
-    healthBar = new StatusBar('health');
-    bottleBar = new StatusBar('bottle');
-    coinBar = new StatusBar('coin');
-    endbossBar = new StatusBar('endboss');
+    air;
+    level;
+    character;
+    healthBar;
+    bottleBar;
+    coinBar;
+    endbossBar;
     throwableObjects = [];
     shootable = true;
     endbossSpawned = false;
@@ -21,6 +21,17 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
+        this.play(level1);
+    }
+
+    play(level) {
+        this.air = new Air;
+        this.level = level;
+        this.character = new Character;
+        this.healthBar = new StatusBar('health');
+        this.bottleBar = new StatusBar('bottle');
+        this.coinBar = new StatusBar('coin');
+        this.endbossBar = new StatusBar('endboss');
         this.draw();
         this.setWorld();
         this.run();
@@ -99,7 +110,7 @@ class World {
                 if (bottle.isColliding(enemy) && !bottle.splash) {
                     enemy.hit(20);
                     bottle.splash = true;
-                    if(enemy instanceof Endboss){
+                    if (enemy instanceof Endboss) {
                         this.endbossBar.setPercentageEndboss(enemy.health);
                     }
                 }

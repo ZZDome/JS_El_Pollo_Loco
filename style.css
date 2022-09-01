@@ -14,3 +14,21 @@ body{
 canvas{
     background-color: black;
 }
+
+#startScreen{
+    position: absolute;
+    top: 10vh;
+    left: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 80vh;
+    background-image: url('img/9_intro_outro_screens/start/startscreen_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.hide{
+    display: none !important;
+}
