@@ -9,6 +9,7 @@ class World {
     throwableObjects = [];
     shootable = true;
     endbossSpawned = false;
+    currentLevel;
 
     canvas;
     ctx;
@@ -46,7 +47,16 @@ class World {
             this.checkHarvestBottle();
             this.checkHarvestCoin();
             this.checkEndbossSpawn();
+            this.checkEnd();
         }, 150);
+    }
+
+    checkEnd(){
+        let endboss = this.level.enemies.length - 1;
+            endboss = this.level.enemies[endboss];
+        if(endboss.isDead()){
+            stop();
+        }
     }
 
     checkEndbossSpawn() {
