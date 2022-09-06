@@ -57,7 +57,10 @@ class World {
         let endboss = this.level.enemies.length - 1;
             endboss = this.level.enemies[endboss];
         if(!endboss.isAlive && this.isRunning){
-            stop();
+            stop('victoryScreen');
+            this.isRunning = false;
+        }else if(this.character.isDead() && this.isRunning){
+            stop('gameOverScreen');
             this.isRunning = false;
         }
     }

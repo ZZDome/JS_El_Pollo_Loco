@@ -37,7 +37,15 @@
     <div id="fullscreen">
         <h1 id="header">El Pollo Loco</h1>
         <canvas id="canvas" class="hide" width="720" height="480"></canvas>
-        <div id="startScreen" class="hide">
+        <div id="startScreen" class="screen hide">
+            <button class="button" onclick="play()">Start</button>
+            <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
+        </div>
+        <div id="victoryScreen" class="screen hide">
+            <button class="button" onclick="play()">Start</button>
+            <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
+        </div>
+        <div id="gameOverScreen" class="screen hide">
             <button class="button" onclick="play()">Start</button>
             <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
         </div>

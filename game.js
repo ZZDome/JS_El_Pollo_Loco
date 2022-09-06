@@ -17,9 +17,9 @@ function play() {
 
 }
 
-function stop() {
+function stop(element) {
     setTimeout(() => {
-        document.getElementById('startScreen').classList.remove('hide');
+        document.getElementById(element).classList.remove('hide');
         deleteLevel();
     }, 2000);
 
