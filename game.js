@@ -1,30 +1,41 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let gameRun = false;
-let gameStop;
 
 
-function init(){
+function init() {
     canvas = document.getElementById('canvas');/* 
     world = new World(canvas, keyboard); */
     document.getElementById('startScreen').classList.remove('hide');
 }
 
-function play(){
-    gameRun = true;
+function play() {
     document.getElementById('startScreen').classList.add('hide');
+    document.getElementById('canvas').classList.remove('hide');
     setLevel1();
     world = new World(canvas, keyboard);
-    
+
 }
 
-function stop(){
+function stop() {
     setTimeout(() => {
         document.getElementById('startScreen').classList.remove('hide');
         deleteLevel();
     }, 2000);
-    
+
+}
+
+function fullscreen(element) {
+    document.getElementById('canvas').classList.add('fullscreen');
+    document.getElementById('header').classList.add('hide');
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+        element.msRequestFullscreen();
+    } else if (element.webkitRequestFullscreen) {  // iOS Safari
+        element.webkitRequestFullscreen();
+    }
+
 }
 
 window.addEventListener('keydown', (e) => {

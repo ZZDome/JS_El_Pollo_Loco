@@ -1,5 +1,10 @@
 body{
     margin: 0;
+    padding: 0;
+}
+
+#fullscreen{
+    margin: 0;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -13,6 +18,7 @@ body{
 
 canvas{
     background-color: black;
+    display: block;
 }
 
 #startScreen{
@@ -27,13 +33,15 @@ canvas{
     background-image: url('img/9_intro_outro_screens/start/startscreen_1.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .button{
     width: 200px;
     height: 70px;
     margin-top: 10vh;
+    margin-left: 32px;
+    margin-right: 32px;
     background-color: rgb(254, 176, 67);
     color: black;
     border-radius: 10px;
@@ -48,4 +56,51 @@ canvas{
 
 .hide{
     display: none !important;
+}
+
+@media only screen and (max-width: 1900px){
+    .fullscreen{
+        width: 100%;
+        height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 1200px){
+    .button{
+        margin-top: 20vh;
+    }
+}
+
+@media only screen and (max-width: 840px){
+    .button{
+        margin-top: 25vh;
+        width: 100px;
+        height: 35px;
+    }
+}
+
+@media only screen and (max-width: 720px){
+    canvas{
+        width: 100%;
+    }
+
+    .button{
+        margin-top: 35vh;
+    }
+}
+
+@media only screen and (max-height: 480px){
+    canvas{
+        height: 100vh;
+    }
+
+    .button{
+        margin-top: 10vh;
+        width: 100px;
+        height: 35px;
+    }
+
+    h1{
+        display: none;
+    }
 }

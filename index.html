@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,15 +28,20 @@
     <script src="models/throwable-object.class.js"></script>
     <script src="models/level.class.js"></script>
     <script src="levels/level1.js"></script>
-    
+
 
     <script src="game.js"></script>
 </head>
+
 <body onload="init()">
-    <h1>El Pollo Loco</h1>
-    <canvas id="canvas" width="720" height="480"></canvas>
-    <div id="startScreen" class="hide">
-        <button class="button" onclick="play()">Start</button>
+    <div id="fullscreen">
+        <h1 id="header">El Pollo Loco</h1>
+        <canvas id="canvas" class="hide" width="720" height="480"></canvas>
+        <div id="startScreen" class="hide">
+            <button class="button" onclick="play()">Start</button>
+            <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
+        </div>
     </div>
 </body>
+
 </html>
