@@ -1,6 +1,8 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let gameRun = false;
+let gameStop;
 
 
 function init(){
@@ -10,6 +12,7 @@ function init(){
 }
 
 function play(){
+    gameRun = true;
     document.getElementById('startScreen').classList.add('hide');
     setLevel1();
     world = new World(canvas, keyboard);

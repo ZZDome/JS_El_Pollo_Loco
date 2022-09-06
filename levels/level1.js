@@ -1,7 +1,7 @@
 let level1;
 
 function deleteLevel(){
-    level1 = false;
+    level1 = null;
 }
 
 function setLevel1(){

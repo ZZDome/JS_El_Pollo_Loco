@@ -10,6 +10,7 @@ class World {
     shootable = true;
     endbossSpawned = false;
     currentLevel;
+    isRunning;
 
     canvas;
     ctx;
@@ -23,6 +24,7 @@ class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.play(level1);
+        this.isRunning = true;
     }
 
     play(level) {
@@ -54,8 +56,9 @@ class World {
     checkEnd(){
         let endboss = this.level.enemies.length - 1;
             endboss = this.level.enemies[endboss];
-        if(endboss.isDead()){
+        if(!endboss.isAlive && this.isRunning){
             stop();
+            this.isRunning = false;
         }
     }
 
