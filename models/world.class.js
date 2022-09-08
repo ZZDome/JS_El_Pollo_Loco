@@ -6,11 +6,17 @@ class World {
     bottleBar;
     coinBar;
     endbossBar;
+    start;
+    gameOver;
+    victory;
     throwableObjects = [];
     shootable = true;
     endbossSpawned = false;
     currentLevel;
     isRunning;
+    startScreen;
+    gameOverScreen;
+    victoryScreen;
 
     canvas;
     ctx;
@@ -23,11 +29,29 @@ class World {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
-        this.play(level1);
-        this.isRunning = true;
+        this.showStartScreen();
+    }
+
+    showStartScreen(){
+        this.startScreen = true;
+        this.start = new StartScreen;
+        this.draw();
+    }
+
+    showGameOverScreen(){
+        this.gameOverScreen = true;
+        this.gameOver = new GameOverScreen;
+    }
+
+    showVictoryScreen(){
+        this.victoryScreen = true;
+        this.victory = new VictoryScreen;
     }
 
     play(level) {
+        this.gameOverScreen = false;
+        this.victoryScreen = false;
+        this.isRunning = true;
         this.air = new Air;
         this.level = level;
         this.character = new Character;
@@ -35,7 +59,6 @@ class World {
         this.bottleBar = new StatusBar('bottle');
         this.coinBar = new StatusBar('coin');
         this.endbossBar = new StatusBar('endboss');
-        this.draw();
         this.setWorld();
         this.run();
         this.paralaxeBG();
@@ -53,13 +76,13 @@ class World {
         }, 150);
     }
 
-    checkEnd(){
+    checkEnd() {
         let endboss = this.level.enemies.length - 1;
-            endboss = this.level.enemies[endboss];
-        if(!endboss.isAlive && this.isRunning){
+        endboss = this.level.enemies[endboss];
+        if (!endboss.isAlive && this.isRunning) {
             stop('victoryScreen');
             this.isRunning = false;
-        }else if(this.character.isDead() && this.isRunning){
+        } else if (this.character.isDead() && this.isRunning) {
             stop('gameOverScreen');
             this.isRunning = false;
         }
@@ -220,31 +243,40 @@ class World {
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.drawObject(this.air);
+        if (!this.startScreen && !this.gameOverScreen && !this.victoryScreen) {
+            this.drawObject(this.air);
 
-        this.ctx.translate(this.camaraX, 0);
+            this.ctx.translate(this.camaraX, 0);
 
 
-        this.drawObjects(this.level.bglayer3);
-        this.drawObjects(this.level.cloudsLayer2);
-        this.drawObjects(this.level.bglayer2);
-        this.drawObjects(this.level.clouds);
-        this.drawObjects(this.level.bglayer1);
+            this.drawObjects(this.level.bglayer3);
+            this.drawObjects(this.level.cloudsLayer2);
+            this.drawObjects(this.level.bglayer2);
+            this.drawObjects(this.level.clouds);
+            this.drawObjects(this.level.bglayer1);
 
-        this.drawObjects(this.level.enemies);
-        this.drawObjects(this.level.coins);
-        this.drawObject(this.character);
-        this.drawObjects(this.throwableObjects);
-        this.drawObjects(this.level.bottles);
+            this.drawObjects(this.level.enemies);
+            this.drawObjects(this.level.coins);
+            this.drawObject(this.character);
+            this.drawObjects(this.throwableObjects);
+            this.drawObjects(this.level.bottles);
 
-        this.ctx.translate(-this.camaraX, 0);
-        this.drawObject(this.healthBar);
-        this.drawObject(this.bottleBar);
-        this.drawObject(this.coinBar);
-        this.drawObject(this.endbossBar);
-        this.ctx.translate(this.camaraX, 0);
+            this.ctx.translate(-this.camaraX, 0);
+            this.drawObject(this.healthBar);
+            this.drawObject(this.bottleBar);
+            this.drawObject(this.coinBar);
+            this.drawObject(this.endbossBar);
+            this.ctx.translate(this.camaraX, 0);
 
-        this.ctx.translate(-this.camaraX, 0);
+            this.ctx.translate(-this.camaraX, 0);
+
+        }else if(this.startScreen){
+            this.drawObject(this.start);
+        }else if (this.gameOverScreen){
+            this.drawObject(this.gameOver);
+        }else if (this.victoryScreen){
+            this.drawObject(this.victory);
+        }
 
         let self = this;
         requestAnimationFrame(function () {

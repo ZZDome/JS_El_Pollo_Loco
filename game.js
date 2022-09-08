@@ -4,22 +4,28 @@ let keyboard = new Keyboard();
 
 
 function init() {
-    canvas = document.getElementById('canvas');/* 
-    world = new World(canvas, keyboard); */
+    canvas = document.getElementById('canvas');
+    world = new World(canvas, keyboard);
     document.getElementById('startScreen').classList.remove('hide');
 }
 
 function play() {
     document.getElementById('startScreen').classList.add('hide');
-    document.getElementById('canvas').classList.remove('hide');
-    setLevel1();
+    document.getElementById('gameOverScreen').classList.add('hide');
     world = new World(canvas, keyboard);
-
+    setLevel1();
+    world.play(level1);
+    world.startScreen = false;
 }
 
 function stop(element) {
     setTimeout(() => {
         document.getElementById(element).classList.remove('hide');
+        if(element == 'gameOverScreen'){
+            world.showGameOverScreen();
+        }else{
+            world.showVictoryScreen();
+        }
         deleteLevel();
     }, 2000);
 

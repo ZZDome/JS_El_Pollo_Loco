@@ -28,14 +28,11 @@ canvas{
     left: 5%;
     right: 5%;
     display: flex;
-    background-color: rgb(214, 132, 55);
     justify-content: center;
     align-items: flex-start;
-    border: solid 2px black;
-    border-radius: 10px;
 }
 
-#startScreen{
+/* #startScreen{
     background-image: url('img/9_intro_outro_screens/start/startscreen_1.png');
     background-repeat: no-repeat;
     background-position: center;
@@ -54,7 +51,7 @@ canvas{
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-}
+} */
 
 .button{
     width: 200px;

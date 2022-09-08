@@ -13,6 +13,9 @@
     <script src="models/drawable-object.class.js"></script>
     <script src="models/status-bar.class.js"></script>
     <script src="models/movableObject.class.js"></script>
+    <script src="models/start-screen.class.js"></script>
+    <script src="models/game-over-screen.class.js"></script>
+    <script src="models/victory-screen.class.js"></script>
     <script src="models/character.class.js"></script>
     <script src="models/chicken.class.js"></script>
     <script src="models/small-chicken.class.js"></script>
@@ -36,17 +39,17 @@
 <body onload="init()">
     <div id="fullscreen">
         <h1 id="header">El Pollo Loco</h1>
-        <canvas id="canvas" class="hide" width="720" height="480"></canvas>
+        <canvas id="canvas" class="" width="720" height="480"></canvas>
         <div id="startScreen" class="screen hide">
             <button class="button" onclick="play()">Start</button>
             <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
         </div>
         <div id="victoryScreen" class="screen hide">
-            <button class="button" onclick="play()">Start</button>
+            <button class="button" onclick="play()">Next Level</button>
             <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
         </div>
         <div id="gameOverScreen" class="screen hide">
-            <button class="button" onclick="play()">Start</button>
+            <button class="button" onclick="play()">Restart</button>
             <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
         </div>
     </div>
