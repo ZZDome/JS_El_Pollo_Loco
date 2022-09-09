@@ -12,10 +12,19 @@ function init() {
 function play() {
     document.getElementById('startScreen').classList.add('hide');
     document.getElementById('gameOverScreen').classList.add('hide');
-    world = new World(canvas, keyboard);
     setLevel1();
     world.play(level1);
     world.startScreen = false;
+}
+
+function restart(){
+    init();
+    document.getElementById('gameOverScreen').classList.add('hide');
+}
+
+function nextLevel(){
+    init();
+    document.getElementById('victoryScreen').classList.add('hide');
 }
 
 function stop(element) {
@@ -34,6 +43,8 @@ function stop(element) {
 function fullscreen(element) {
     document.getElementById('canvas').classList.add('fullscreen');
     document.getElementById('header').classList.add('hide');
+    document.getElementById('fullscreenOn').classList.add('hide');
+    document.getElementById('fullscreenOff').classList.remove('hide');
     if (element.requestFullscreen) {
         element.requestFullscreen();
     } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
@@ -42,6 +53,16 @@ function fullscreen(element) {
         element.webkitRequestFullscreen();
     }
 
+}
+
+function offFullscreen(){
+    document.getElementById('canvas').classList.remove('fullscreen');
+    document.getElementById('header').classList.remove('hide');
+    document.getElementById('fullscreenOn').classList.remove('hide');
+    document.getElementById('fullscreenOff').classList.add('hide');
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    }
 }
 
 window.addEventListener('keydown', (e) => {

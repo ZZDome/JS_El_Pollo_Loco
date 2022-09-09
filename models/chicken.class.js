@@ -7,7 +7,6 @@ class Chicken extends MovableObject {
     width = 70;
     health = 20;
 
-    AUDIO_CHICKENBG = new Audio('audio/chicken-background.mp3');
     AUDIO_HURT = new Audio('audio/chicken-scream.mp3');
 
     IMAGES_WALKING = [
@@ -27,9 +26,6 @@ class Chicken extends MovableObject {
         this.animateWalk();
         this.animate();
         this.AUDIO_HURT.volume = 0.1;
-        this.AUDIO_CHICKENBG.volume = 0.01;
-        this.AUDIO_CHICKENBG.loop = true;
-        this.AUDIO_CHICKENBG.play();
     }
 
     animate(){

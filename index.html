@@ -39,18 +39,13 @@
 <body onload="init()">
     <div id="fullscreen">
         <h1 id="header">El Pollo Loco</h1>
-        <canvas id="canvas" class="" width="720" height="480"></canvas>
-        <div id="startScreen" class="screen hide">
-            <button class="button" onclick="play()">Start</button>
-            <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
-        </div>
-        <div id="victoryScreen" class="screen hide">
-            <button class="button" onclick="play()">Next Level</button>
-            <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
-        </div>
-        <div id="gameOverScreen" class="screen hide">
-            <button class="button" onclick="play()">Restart</button>
-            <button class="button" onclick="fullscreen(document.getElementById('fullscreen'))">Fullscreen</button>
+        <div class="container" width="720" height="480">
+            <canvas id="canvas" class="" width="720" height="480"></canvas>  
+            <button id="startScreen" class="button1 hide" onclick="play()">Start</button> 
+            <button id="victoryScreen" class="button1 hide" onclick="nextLevel()">Next Level</button>
+            <button id="gameOverScreen" class="button1 hide" onclick="restart()">Retry</button>
+            <button id="fullscreenOn" class="buttonFullscreen" onclick="fullscreen(document.getElementById('fullscreen'))">FS ON</button>
+            <button id="fullscreenOff" class="buttonFullscreen hide" onclick="offFullscreen()">FS OFF</button>
         </div>
     </div>
 </body>

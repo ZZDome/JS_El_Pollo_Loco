@@ -13,7 +13,6 @@ class Character extends MovableObject {
 
     AUDIO_WALKING = new Audio('audio/walking.mp3');
     AUDIO_JUMP = new Audio('audio/jump.mp3');
-    AUDIO_BACKGROUND = new Audio('audio/background.mp3');
     AUDIO_HURT = new Audio('audio/pepe-hurt.mp3');
 
 
@@ -91,9 +90,6 @@ class Character extends MovableObject {
         this.applyGravity();
         this.animateWalk();
         this.AUDIO_JUMP.volume = 0.5;
-        this.AUDIO_BACKGROUND.volume = 0.3;
-        this.AUDIO_BACKGROUND.loop = true;
-        this.AUDIO_BACKGROUND.play();
     }
 
     animateWalk() {

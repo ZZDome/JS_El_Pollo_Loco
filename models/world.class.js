@@ -18,6 +18,9 @@ class World {
     gameOverScreen;
     victoryScreen;
 
+    AUDIO_CHICKENBG = new Audio('audio/chicken-background.mp3');
+    AUDIO_BACKGROUND = new Audio('audio/background.mp3');
+
     canvas;
     ctx;
     keyboard;
@@ -30,22 +33,30 @@ class World {
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.showStartScreen();
+        this.draw();
+        this.paralaxeBG();
     }
 
     showStartScreen(){
+        this.stopAudio();
         this.startScreen = true;
         this.start = new StartScreen;
-        this.draw();
+        this.playAudio();
+        
     }
 
     showGameOverScreen(){
+        this.stopAudio();
         this.gameOverScreen = true;
         this.gameOver = new GameOverScreen;
+        this.playAudio();
     }
 
     showVictoryScreen(){
+        this.stopAudio();
         this.victoryScreen = true;
         this.victory = new VictoryScreen;
+        this.playAudio();
     }
 
     play(level) {
@@ -61,7 +72,23 @@ class World {
         this.endbossBar = new StatusBar('endboss');
         this.setWorld();
         this.run();
-        this.paralaxeBG();
+    }
+
+    playAudio(){
+        this.AUDIO_CHICKENBG.volume = 0.01;
+        this.AUDIO_CHICKENBG.loop = true;
+        this.AUDIO_CHICKENBG.play();
+        
+        this.AUDIO_BACKGROUND.volume = 0.3;
+        this.AUDIO_BACKGROUND.loop = true;
+        this.AUDIO_BACKGROUND.play();
+    }
+
+    stopAudio(){
+        this.AUDIO_CHICKENBG.pause();
+        this.AUDIO_BACKGROUND.pause();
+        this.AUDIO_CHICKENBG.currentTime = 0;
+        this.AUDIO_BACKGROUND.currentTime = 0;
     }
 
     run() {
