@@ -19,7 +19,6 @@ function play() {
 }
 
 function restart(){
-    
     world.stopAudio();
     init();
     document.getElementById('gameOverScreen').classList.add('hide');

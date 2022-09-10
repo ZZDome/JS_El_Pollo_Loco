@@ -291,7 +291,9 @@ class World {
             this.drawObject(this.healthBar);
             this.drawObject(this.bottleBar);
             this.drawObject(this.coinBar);
-            this.drawObject(this.endbossBar);
+            if(this.level.enemies[this.level.enemies.length - 1].fighting){
+                this.drawObject(this.endbossBar);
+            }
             this.ctx.translate(this.camaraX, 0);
 
             this.ctx.translate(-this.camaraX, 0);

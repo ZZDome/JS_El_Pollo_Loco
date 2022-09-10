@@ -73,7 +73,7 @@ class StatusBar extends DrawableObject {
 
     initEndbossBar(){
         this.y = 0;
-        this.x = 560;
+        this.x = 300;
         this.setPercentageEndboss(100);
     }
 
