@@ -19,12 +19,14 @@ function play() {
 }
 
 function restart(){
+    mute(0);
     world.stopAudio();
     init();
     document.getElementById('gameOverScreen').classList.add('hide');
 }
 
 function nextLevel(){
+    mute(0);
     world.stopAudio();
     init();
     document.getElementById('victoryScreen').classList.add('hide');

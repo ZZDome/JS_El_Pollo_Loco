@@ -36,7 +36,6 @@ class World {
         this.showStartScreen();
         this.draw();
         this.paralaxeBG();
-        this.stopAudio();
         this.playAudio();
     }
 
