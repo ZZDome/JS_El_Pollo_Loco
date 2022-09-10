@@ -1,10 +1,11 @@
 let canvas;
 let world;
-let keyboard = new Keyboard();
+let keyboard;
 
 
 function init() {
     canvas = document.getElementById('canvas');
+    keyboard = new Keyboard();
     world = new World(canvas, keyboard);
     document.getElementById('startScreen').classList.remove('hide');
 }
@@ -18,11 +19,14 @@ function play() {
 }
 
 function restart(){
+    
+    world.stopAudio();
     init();
     document.getElementById('gameOverScreen').classList.add('hide');
 }
 
 function nextLevel(){
+    world.stopAudio();
     init();
     document.getElementById('victoryScreen').classList.add('hide');
 }
@@ -36,6 +40,7 @@ function stop(element) {
             world.showVictoryScreen();
         }
         deleteLevel();
+        world.character.isAlive = false;
     }, 2000);
 
 }

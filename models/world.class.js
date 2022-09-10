@@ -35,28 +35,24 @@ class World {
         this.showStartScreen();
         this.draw();
         this.paralaxeBG();
+        this.stopAudio();
+        this.playAudio();
     }
 
     showStartScreen(){
-        this.stopAudio();
         this.startScreen = true;
         this.start = new StartScreen;
-        this.playAudio();
         
     }
 
     showGameOverScreen(){
-        this.stopAudio();
         this.gameOverScreen = true;
         this.gameOver = new GameOverScreen;
-        this.playAudio();
     }
 
     showVictoryScreen(){
-        this.stopAudio();
         this.victoryScreen = true;
         this.victory = new VictoryScreen;
-        this.playAudio();
     }
 
     play(level) {
