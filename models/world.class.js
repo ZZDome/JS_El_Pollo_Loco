@@ -126,7 +126,7 @@ class World {
 
     paralaxeBG() {
         setInterval(() => {
-            if (this.keyboard.RIGHT && this.character.x < this.level.level_end_x) {
+            if (this.keyboard.RIGHT && !this.keyboard.LEFT && this.character.x < this.level.level_end_x) {
                 this.level.bglayer3.forEach(bg => {
                     bg.x += 2;
                 });
@@ -139,7 +139,7 @@ class World {
                 this.level.clouds.forEach(bg => {
                     bg.x += 1;
                 });
-            } else if (this.keyboard.LEFT && this.character.x > 0) {
+            } else if (this.keyboard.LEFT && !this.keyboard.RIGHT && this.character.x > 0) {
                 this.level.bglayer3.forEach(bg => {
                     bg.x -= 2;
                 });
