@@ -54,6 +54,20 @@ canvas{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.buttonMute{
+    position: absolute;
+    bottom: 1%;
+    right: 7%;
+    width: 30px;
+    height: 30px;
+    font-size: 40%;
+    background-color: rgb(254, 176, 67);
+    color: black;
+    border-radius: 50%;
+    border-style: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 .screen{
     position: absolute;
     top: 5vh;

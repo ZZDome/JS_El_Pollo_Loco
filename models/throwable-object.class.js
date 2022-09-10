@@ -8,6 +8,7 @@ class ThrowableObject extends MovableObject {
     splash = false;
 
     AUDIO_SMASH = new Audio('audio/bottle-smash.mp3');
+    AUDIO_THROW = new Audio('audio/throw.mp3');
     
 
     IMAGES_THROW = [
@@ -31,6 +32,9 @@ class ThrowableObject extends MovableObject {
         this.loadImages(this.IMAGES_THROW);
         this.loadImages(this.IMAGES_SPLASH);
         this.throw(charX, charY, charSpeedX);
+        this.AUDIO_THROW.loop = false;
+        this.AUDIO_THROW.volume = 0.6;
+        this.AUDIO_THROW.play();
     }
 
     throw(x, y, charSpeedX){
@@ -41,6 +45,7 @@ class ThrowableObject extends MovableObject {
             if(this.splash && this.isAlive || !this.isAboveGround() && this.isAlive){
                 this.playAnimation(this.IMAGES_SPLASH);
                 this.playSmash();
+                this.AUDIO_THROW.pause();
             }else{
                 this.playAnimation(this.IMAGES_THROW);
             }

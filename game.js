@@ -70,6 +70,18 @@ function offFullscreen(){
     }
 }
 
+function mute(value){
+    if(value == 1){
+        world.stopAudio();
+        document.getElementById('muteOff').classList.remove('hide');
+    document.getElementById('muteOn').classList.add('hide');
+    }else if(value == 0){
+        world.playAudio();
+        document.getElementById('muteOn').classList.remove('hide');
+    document.getElementById('muteOff').classList.add('hide');
+    }
+}
+
 window.addEventListener('keydown', (e) => {
     keyboard.keyPressed(e);
 });

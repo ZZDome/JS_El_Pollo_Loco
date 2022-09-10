@@ -17,6 +17,7 @@ class World {
     startScreen;
     gameOverScreen;
     victoryScreen;
+    muteAudio = false;
 
     AUDIO_CHICKENBG = new Audio('audio/chicken-background.mp3');
     AUDIO_BACKGROUND = new Audio('audio/background.mp3');
@@ -71,6 +72,7 @@ class World {
     }
 
     playAudio(){
+        this.muteAudio = false;
         this.AUDIO_CHICKENBG.volume = 0.01;
         this.AUDIO_CHICKENBG.loop = true;
         this.AUDIO_CHICKENBG.play();
@@ -81,6 +83,7 @@ class World {
     }
 
     stopAudio(){
+        this.muteAudio = true;
         this.AUDIO_CHICKENBG.pause();
         this.AUDIO_BACKGROUND.pause();
         this.AUDIO_CHICKENBG.currentTime = 0;
