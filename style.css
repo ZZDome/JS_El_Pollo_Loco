@@ -198,18 +198,41 @@ button:hover{
 
     .buttonMoveLeft{
         display: unset !important;
+        bottom: -7%;
+        left: 5%;
+        width: 40px;
+        height: 40px;
     }
     
     .buttonMoveRight{
         display: unset !important;
+        bottom: -7%;
+        left: 20%;
+        width: 40px;
+        height: 40px;
     }
     
     .buttonJump{
         display: unset !important;
+        bottom: -7%;
+        right: 5%;
+        width: 40px;
+        height: 40px;
     }
     
     .buttonThrow{
         display: unset !important;
+        bottom: -7%;
+        right: 20%;
+        width: 40px;
+        height: 40px;
+    }
+    
+    .buttonMute{
+        top: 1%;
+        right: 11%;
+        width: 30px;
+        height: 30px;
     }
 }
 
@@ -234,17 +257,40 @@ button:hover{
 
     .buttonMoveLeft{
         display: unset !important;
+        bottom: 5%;
+        left: 5%;
+        width: 50px;
+        height: 50px;
     }
     
     .buttonMoveRight{
         display: unset !important;
+        bottom: 5%;
+        left: 15%;
+        width: 50px;
+        height: 50px;
     }
     
     .buttonJump{
         display: unset !important;
+        bottom: 5%;
+        right: 5%;
+        width: 50px;
+        height: 50px;
     }
     
     .buttonThrow{
         display: unset !important;
+        bottom: 5%;
+        right: 15%;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .buttonMute{
+        top: 1%;
+        right: 7%;
+        width: 30px;
+        height: 30px;
     }
 }
