@@ -68,6 +68,66 @@ canvas{
     box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
 }
 
+.buttonMoveLeft{
+    display: none;
+    position: absolute;
+    bottom: 3%;
+    left: 5%;
+    width: 50px;
+    height: 50px;
+    font-size: 40%;
+    background-color: rgb(254, 176, 67);
+    color: black;
+    border-radius: 50%;
+    border-style: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.buttonMoveRight{
+    display: none;
+    position: absolute;
+    bottom: 3%;
+    left: 15%;
+    width: 50px;
+    height: 50px;
+    font-size: 40%;
+    background-color: rgb(254, 176, 67);
+    color: black;
+    border-radius: 50%;
+    border-style: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.buttonJump{
+    display: none;
+    position: absolute;
+    bottom: 3%;
+    right: 5%;
+    width: 50px;
+    height: 50px;
+    font-size: 40%;
+    background-color: rgb(254, 176, 67);
+    color: black;
+    border-radius: 50%;
+    border-style: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.buttonThrow{
+    display: none;
+    position: absolute;
+    bottom: 3%;
+    right: 15%;
+    width: 50px;
+    height: 50px;
+    font-size: 40%;
+    background-color: rgb(254, 176, 67);
+    color: black;
+    border-radius: 50%;
+    border-style: none;
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
 .screen{
     position: absolute;
     top: 5vh;
@@ -155,6 +215,22 @@ button:hover{
     .button{
         margin-top: 35vh;
     }
+
+    .buttonMoveLeft{
+        display: unset !important;
+    }
+    
+    .buttonMoveRight{
+        display: unset !important;
+    }
+    
+    .buttonJump{
+        display: unset !important;
+    }
+    
+    .buttonThrow{
+        display: unset !important;
+    }
 }
 
 @media only screen and (max-height: 480px){
@@ -174,5 +250,21 @@ button:hover{
 
     h1{
         display: none;
+    }
+
+    .buttonMoveLeft{
+        display: unset !important;
+    }
+    
+    .buttonMoveRight{
+        display: unset !important;
+    }
+    
+    .buttonJump{
+        display: unset !important;
+    }
+    
+    .buttonThrow{
+        display: unset !important;
     }
 }

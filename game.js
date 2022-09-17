@@ -8,6 +8,7 @@ function init() {
     keyboard = new Keyboard();
     world = new World(canvas, keyboard);
     document.getElementById('startScreen').classList.remove('hide');
+    btnTouch();
 }
 
 function play() {
@@ -90,3 +91,37 @@ window.addEventListener('keydown', (e) => {
 window.addEventListener('keyup', (e) => {
     keyboard.keyNotPressed(e);
 });
+
+function btnTouch(){
+    document.getElementById('moveLeft').addEventListener('touchstart', (e) => {
+        keyboard.touch('left', true);
+    });
+    
+    document.getElementById('moveLeft').addEventListener('touchend', (e) => {
+        keyboard.touch('left', false);
+    });
+
+    document.getElementById('moveRight').addEventListener('touchstart', (e) => {
+        keyboard.touch('right', true);
+    });
+    
+    document.getElementById('moveRight').addEventListener('touchend', (e) => {
+        keyboard.touch('right', false);
+    });
+
+    document.getElementById('btnJump').addEventListener('touchstart', (e) => {
+        keyboard.touch('jump', true);
+    });
+    
+    document.getElementById('btnJump').addEventListener('touchend', (e) => {
+        keyboard.touch('jump', false);
+    });
+
+    document.getElementById('btnThrow').addEventListener('touchstart', (e) => {
+        keyboard.touch('throw', true);
+    });
+    
+    document.getElementById('btnThrow').addEventListener('touchend', (e) => {
+        keyboard.touch('throw', false);
+    });
+}

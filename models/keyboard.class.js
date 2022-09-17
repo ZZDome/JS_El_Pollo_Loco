@@ -6,6 +6,22 @@ class Keyboard {
     SPACE = false;
     D = false;
 
+    touch(btn, value){
+           if(btn == 'left'){
+            this.LEFT = value;
+           }else if (btn == 'right'){
+            this.RIGHT = value;
+           }else if (btn == 'jump'){
+            this.UP = value;
+           }else if (btn == 'throw'){
+            this.SPACE = value;
+           }
+    }
+
+    touchEnd(btn){
+        btn = false;
+}
+
     keyPressed(key){
         if(key.keyCode == 38){
             this.UP = true;
