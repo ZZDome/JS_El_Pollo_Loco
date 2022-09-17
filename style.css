@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #fullscreen{
@@ -138,27 +139,6 @@ canvas{
     justify-content: center;
     align-items: flex-start;
 }
-
-/* #startScreen{
-    background-image: url('img/9_intro_outro_screens/start/startscreen_1.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-#victoryScreen{
-    background-image: url('img/9_intro_outro_screens/game_over/you lost.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-}
-
-#gameOverScreen{
-    background-image: url('img/9_intro_outro_screens/game_over/game over.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-} */
 
 .button{
     width: 200px;
