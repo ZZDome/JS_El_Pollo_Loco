@@ -20,6 +20,14 @@ class MovableObject extends DrawableObject {
         }
     }
 
+    isStamp(mo){
+            return (this.x + this.offsetX) + (this.width - this.offsetX) > mo.x &&
+            (this.y + this.offsetY) + (this.height - this.offsetY) > mo.y &&
+            (this.x + this.offsetX) < mo.x + mo.width &&
+            (this.y + this.offsetY) < mo.y + mo.height;
+        
+    }
+
     hit(lifePoints){
         this.health -= lifePoints;
         if (this.health < 0){

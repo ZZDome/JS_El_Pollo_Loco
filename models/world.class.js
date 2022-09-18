@@ -99,6 +99,9 @@ class World {
             this.checkEndbossSpawn();
             this.checkEnd();
         }, 150);
+        setInterval(() => {
+            this.checkStamp();
+        }, 1000 / 60);
     }
 
     checkEnd() {
@@ -180,6 +183,16 @@ class World {
                     }
                 }
             })
+        });
+    }
+
+    checkStamp(){
+        console.log(this.character.y)
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isStamp(enemy) && this.character.isAboveGround() && !enemy.isDead()) {
+                this.character.speedY = 15;
+                enemy.hit(20);
+            }
         });
     }
 
