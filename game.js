@@ -52,6 +52,7 @@ function fullscreen(element) {
     document.getElementById('header').classList.add('hide');
     document.getElementById('fullscreenOn').classList.add('hide');
     document.getElementById('fullscreenOff').classList.remove('hide');
+    document.getElementById('controls').classList.add('hide');
     if (element.requestFullscreen) {
         element.requestFullscreen();
     } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
@@ -67,6 +68,7 @@ function offFullscreen(){
     document.getElementById('header').classList.remove('hide');
     document.getElementById('fullscreenOn').classList.remove('hide');
     document.getElementById('fullscreenOff').classList.add('hide');
+    document.getElementById('controls').classList.remove('hide');
     if (document.exitFullscreen) {
         document.exitFullscreen();
     }

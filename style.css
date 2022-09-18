@@ -27,6 +27,25 @@ canvas{
     display: block;
 }
 
+#controls{
+    background-color: #994409;
+    color: black;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#controls div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+#controls div span{
+    padding-left: 8px;
+}
+
 .button1{
     position: absolute;
     top: 10%;
@@ -192,6 +211,10 @@ button:hover{
         width: 100%;
     }
 
+    #controls{
+        display: none;
+    }
+
     .button{
         margin-top: 35vh;
     }
@@ -243,6 +266,10 @@ button:hover{
 
     .container{
         height: 100vh;
+    }
+
+    #controls{
+        display: none;
     }
 
     .button{

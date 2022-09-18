@@ -5,6 +5,7 @@ class Endboss extends MovableObject {
     width = 250;
     fighting = false;
     attacking = false;
+    characterAlive = true;
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -46,6 +47,11 @@ class Endboss extends MovableObject {
         'img/4_enemie_boss_chicken/4_hurt/G23.png'
     ];
 
+    AUDIO_ALERT = new Audio('audio/boss-alert.mp3');
+    AUDIO_HURT = new Audio('audio/boss-hurt.mp3');
+    AUDIO_ATTACK = new Audio('audio/boss-attack.mp3');
+    AUDIO_DEAD = new Audio('audio/boss-dead.mp3');
+
     constructor() {
         super().loadImage(this.IMAGES_WALKING[0]);
         this.loadImages(this.IMAGES_WALKING);
@@ -56,6 +62,10 @@ class Endboss extends MovableObject {
         this.applyGravity();
         this.animateWalk();
         this.animate();
+        this.AUDIO_ALERT.volume = 0.5;
+        this.AUDIO_HURT.volume = 0.5;
+        this.AUDIO_ATTACK.volume = 0.5;
+        this.AUDIO_DEAD.volume = 0.5;
     }
 
     alerted() {
@@ -72,7 +82,7 @@ class Endboss extends MovableObject {
                 this.attacking = true;
                 this.speedY = 15;
             }
-        }, 3000 * Math.random() + 3000);
+        }, 1000 * Math.random() + 3000);
     }
 
     pushBack(value) {
@@ -106,14 +116,16 @@ class Endboss extends MovableObject {
         }, 150);
 
         setInterval(() => {
-            if (this.attacking && !this.isHurt() && this.isAlive && this.fighting && this.isAboveGround()) {
+            if (this.attacking && !this.isHurt() && this.isAlive && this.fighting && this.isAboveGround() && this.characterAlive) {
                 this.playAnimation(this.IMAGES_ATTACK);
+                this.AUDIO_ATTACK.play();
             }
         }, 150);
 
         setInterval(() => {
             if (this.alert) {
                 this.playAnimation(this.IMAGES_ALERT);
+                this.AUDIO_ALERT.play();
             }
         }, 150);
 
@@ -122,6 +134,7 @@ class Endboss extends MovableObject {
                 this.isAlive = false;
                 if (imageDeadIndex < 3) {
                     this.playAnimation(this.IMAGES_DEAD);
+                    this.AUDIO_DEAD.play();
                 } else {
                     this.loadImage(this.IMAGES_DEAD[2]);
                 }
@@ -132,6 +145,7 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (this.isHurt() && this.fighting) {
                 this.playAnimation(this.IMAGES_HURT);
+                this.AUDIO_HURT.play();
             }
         }, 150);
     }

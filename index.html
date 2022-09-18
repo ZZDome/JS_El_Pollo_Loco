@@ -41,16 +41,41 @@
     <div id="fullscreen">
         <h1 id="header">El Pollo Loco</h1>
         <div class="container" width="720" height="480">
-            <canvas id="canvas" class="" width="720" height="480"></canvas>  
-            <button id="startScreen" class="button1 hide" onclick="play()">Start</button> 
+            <canvas id="canvas" class="" width="720" height="480"></canvas>
+            <div id="controls">
+                <div>
+                    <img src="img/icons/arrow-left.svg" alt="">
+                    <span>Move left</span>
+                </div>
+                <div>
+                    <img src="img/icons/arrow-right.svg" alt="">
+                    <span>Move right</span>
+                </div>
+                <div>
+                    <img src="img/icons/space.svg" alt="">
+                    <span>Throw</span>
+                </div>
+                <div>
+                    <img src="img/icons/arrow-up.svg" alt="">
+                    <span>Jump</span>
+                </div>
+            </div>
+            <button id="startScreen" class="button1 hide" onclick="play()">Start</button>
             <button id="victoryScreen" class="button1 hide" onclick="nextLevel()">Next Level</button>
             <button id="gameOverScreen" class="button1 hide" onclick="restart()">Retry</button>
-            <button id="fullscreenOn" class="buttonFullscreen" onclick="fullscreen(document.getElementById('fullscreen'))"><img src="img/icons/fullscreen.svg" alt="FS ON"></button>
-            <button id="fullscreenOff" class="buttonFullscreen hide" onclick="offFullscreen()"><img src="img/icons/fullscreen-exit.svg" alt="FS OFF"></button>
-            <button id="muteOn" class="buttonMute " onclick="mute(1)"> <img src="img/icons/volume-mute-fill.svg" alt="mute"> </button>
-            <button id="muteOff" class="buttonMute hide" onclick="mute(0)"><img src="img/icons/volume-off-fill.svg" alt="unmute"></button>
-            <button id="moveLeft" class="buttonMoveLeft" > <img src="img/icons/chevron-left.svg" alt="move left"> </button>
-            <button id="moveRight" class="buttonMoveRight"> <img src="img/icons/chevron-right.svg" alt="move right"> </button>
+            <button id="fullscreenOn" class="buttonFullscreen"
+                onclick="fullscreen(document.getElementById('fullscreen'))"><img src="img/icons/fullscreen.svg"
+                    alt="FS ON"></button>
+            <button id="fullscreenOff" class="buttonFullscreen hide" onclick="offFullscreen()"><img
+                    src="img/icons/fullscreen-exit.svg" alt="FS OFF"></button>
+            <button id="muteOn" class="buttonMute " onclick="mute(1)"> <img src="img/icons/volume-mute-fill.svg"
+                    alt="mute"> </button>
+            <button id="muteOff" class="buttonMute hide" onclick="mute(0)"><img src="img/icons/volume-off-fill.svg"
+                    alt="unmute"></button>
+            <button id="moveLeft" class="buttonMoveLeft"> <img src="img/icons/chevron-left.svg" alt="move left">
+            </button>
+            <button id="moveRight" class="buttonMoveRight"> <img src="img/icons/chevron-right.svg" alt="move right">
+            </button>
             <button id="btnJump" class="buttonJump"> <img src="img/icons/jumpBtn.svg" alt="jump"> </button>
             <button id="btnThrow" class="buttonThrow"> <img src="img/icons/throwBtn.svg" alt="throw"> </button>
         </div>

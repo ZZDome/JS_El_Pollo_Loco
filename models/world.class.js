@@ -110,6 +110,7 @@ class World {
         } else if (this.character.isDead() && this.isRunning) {
             stop('gameOverScreen');
             this.isRunning = false;
+            endboss.characterAlive = false;
         }
     }
 
