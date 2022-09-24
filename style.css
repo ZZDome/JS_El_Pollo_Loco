@@ -192,6 +192,14 @@ canvas{
         height: 10%;
         font-size: 120%;
     }
+
+    /* #currLVL{
+        top: 5%;
+        right: 0%;
+        width: 100px;
+        height: 50px;
+        font-size: 130%;
+    } */
 }
 
 @media only screen and (max-width: 720px){
@@ -214,6 +222,14 @@ canvas{
         left: 40%;
         width: 20%;
         height: 10%;
+        font-size: 100%;
+    }
+
+    #currLVL{
+        top: 15%;
+        right: 0%;
+        width: 60px;
+        height: 50px;
         font-size: 100%;
     }
 
@@ -275,6 +291,15 @@ canvas{
         width: 100px;
         height: 35px;
     }
+
+    #currLVL{
+        top: 10%;
+        right: 0%;
+        width: 70px;
+        height: 50px;
+        font-size: 100%;
+    }
+
 
     h1{
         display: none;
