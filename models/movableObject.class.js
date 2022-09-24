@@ -1,9 +1,9 @@
 class MovableObject extends DrawableObject {
-    speed = Math.random();
+    speed = Math.random() * 2;
     world;
     otherDirection = false;
     speedY = 0;
-    accelertion = 1;
+    accelertion = 2;
     health = 100;
     died = false;
     lastHit = 0;

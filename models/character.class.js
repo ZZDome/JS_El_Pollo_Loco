@@ -116,7 +116,7 @@ class Character extends MovableObject {
 
             if (this.world.keyboard.UP && !this.isAboveGround() && !this.jumping) {
                 this.jumping = true;
-                this.speedY = 20;
+                this.speedY = 28;
                 this.AUDIO_JUMP.play();
             }
 
@@ -149,7 +149,7 @@ class Character extends MovableObject {
             if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMP);
             }
-        }, 300);
+        }, 200);
 
         setInterval(() => {
             if (!this.world.keyboard.RIGHT && !this.world.keyboard.LEFT && !this.world.keyboard.UP && !this.world.keyboard.SPACE && !this.world.keyboard.DOWN && this.isAlive && !this.jumping) {

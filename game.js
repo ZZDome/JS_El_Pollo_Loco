@@ -41,6 +41,8 @@ function setLevel(){
         setLevel1();
     }else if(currentLevel == 2){
         setLevel2();
+    }else{
+        setLevel1();
     }
 }
 
@@ -49,6 +51,8 @@ function playLevel(){
         return level1;
     }else if(currentLevel == 2){
         return level2;
+    }else{
+        return level1;
     }
 }
 

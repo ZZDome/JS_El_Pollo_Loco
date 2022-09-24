@@ -80,7 +80,7 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (!this.isDead()) {
                 this.attacking = true;
-                this.speedY = 15;
+                this.speedY = 25;
             }
         }, 1000 * Math.random() + 3000);
     }
@@ -97,7 +97,7 @@ class Endboss extends MovableObject {
                 this.x -= 0.40 * this.speed;
             } else if (!this.isAlive && !this.isAboveGround() && this.fighting) {
                 this.pushBack(2);
-                this.speedY = 20;
+                this.speedY = 30;
                 this.fall = true;
             } else if (this.attacking && this.fighting && this.isAlive && this.isAboveGround()) {
                 this.x -= 5;
@@ -120,7 +120,7 @@ class Endboss extends MovableObject {
                 this.playAnimation(this.IMAGES_ATTACK);
                 this.AUDIO_ATTACK.play();
             }
-        }, 150);
+        }, 120);
 
         setInterval(() => {
             if (this.alert) {

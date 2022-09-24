@@ -39,18 +39,18 @@ class World {
         this.playAudio();
     }
 
-    showStartScreen(){
+    showStartScreen() {
         this.startScreen = true;
         this.start = new StartScreen;
-        
+
     }
 
-    showGameOverScreen(){
+    showGameOverScreen() {
         this.gameOverScreen = true;
         this.gameOver = new GameOverScreen;
     }
 
-    showVictoryScreen(){
+    showVictoryScreen() {
         this.victoryScreen = true;
         this.victory = new VictoryScreen;
     }
@@ -70,18 +70,18 @@ class World {
         this.run();
     }
 
-    playAudio(){
+    playAudio() {
         this.muteAudio = false;
         this.AUDIO_CHICKENBG.volume = 0.01;
         this.AUDIO_CHICKENBG.loop = true;
         this.AUDIO_CHICKENBG.play();
-        
+
         this.AUDIO_BACKGROUND.volume = 0.3;
         this.AUDIO_BACKGROUND.loop = true;
         this.AUDIO_BACKGROUND.play();
     }
 
-    stopAudio(){
+    stopAudio() {
         this.muteAudio = true;
         this.AUDIO_CHICKENBG.pause();
         this.AUDIO_BACKGROUND.pause();
@@ -162,11 +162,15 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !enemy.isDead()) {
-                this.character.hit(5);
-                this.healthBar.setPercentageHealth(this.character.health);
+
                 if (enemy instanceof Endboss) {
                     enemy.speedY = 15;
                     enemy.attacking = false;
+                    this.character.hit(20);
+                    this.healthBar.setPercentageHealth(this.character.health);
+                } else {
+                    this.character.hit(5);
+                    this.healthBar.setPercentageHealth(this.character.health);
                 }
             }
         });
@@ -186,7 +190,7 @@ class World {
         });
     }
 
-    checkStamp(){
+    checkStamp() {
         console.log(this.character.y)
         this.level.enemies.forEach((enemy) => {
             if (this.character.isStamp(enemy) && this.character.isAboveGround() && !enemy.isDead()) {
@@ -304,18 +308,18 @@ class World {
             this.drawObject(this.healthBar);
             this.drawObject(this.bottleBar);
             this.drawObject(this.coinBar);
-            if(this.level.enemies[this.level.enemies.length - 1].fighting){
+            if (this.level.enemies[this.level.enemies.length - 1].fighting) {
                 this.drawObject(this.endbossBar);
             }
             this.ctx.translate(this.camaraX, 0);
 
             this.ctx.translate(-this.camaraX, 0);
 
-        }else if(this.startScreen){
+        } else if (this.startScreen) {
             this.drawObject(this.start);
-        }else if (this.gameOverScreen){
+        } else if (this.gameOverScreen) {
             this.drawObject(this.gameOver);
-        }else if (this.victoryScreen){
+        } else if (this.victoryScreen) {
             this.drawObject(this.victory);
         }
 
