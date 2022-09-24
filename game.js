@@ -39,10 +39,13 @@ function nextLevel(){
 function setLevel(){
     if(currentLevel == 1){
         setLevel1();
+        document.getElementById('currLVL'). innerHTML = `Level 1`;
     }else if(currentLevel == 2){
         setLevel2();
+        document.getElementById('currLVL'). innerHTML = `Level 2`;
     }else{
         setLevel1();
+        document.getElementById('currLVL'). innerHTML = `Level 1`;
     }
 }
 
