@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard;
+let currentLevel = 1;
 
 
 function init() {
@@ -14,12 +15,13 @@ function init() {
 function play() {
     document.getElementById('startScreen').classList.add('hide');
     document.getElementById('gameOverScreen').classList.add('hide');
-    setLevel1();
-    world.play(level1);
+    setLevel();
+    world.play(playLevel());
     world.startScreen = false;
 }
 
 function restart(){
+    currentLevel = 1;
     mute(0);
     world.stopAudio();
     init();
@@ -27,10 +29,27 @@ function restart(){
 }
 
 function nextLevel(){
+    currentLevel = currentLevel + 1;
     mute(0);
     world.stopAudio();
     init();
     document.getElementById('victoryScreen').classList.add('hide');
+}
+
+function setLevel(){
+    if(currentLevel == 1){
+        setLevel1();
+    }else if(currentLevel == 2){
+        setLevel2();
+    }
+}
+
+function playLevel(){
+    if(currentLevel == 1){
+        return level1;
+    }else if(currentLevel == 2){
+        return level2;
+    }
 }
 
 function stop(element) {

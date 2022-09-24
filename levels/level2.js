@@ -1,15 +1,21 @@
-let level1;
+let level2;
 
 function deleteLevel(){
-    level1 = 0;
+    level2 = 0;
 }
 
-function setLevel1(){
-    level1 = new Level(
+function setLevel2(){
+    level2 = new Level(
         [
             new Chicken(),
             new Chicken(),
             new Chicken(),
+            new Chicken(),
+            new Chicken(),
+            new Chicken(),
+            new SmallChicken(),
+            new SmallChicken(),
+            new SmallChicken(),
             new SmallChicken(),
             new SmallChicken(),
             new SmallChicken(),
@@ -59,6 +65,10 @@ function setLevel1(){
             new Backgroundlayer1(720*6) 
         ],
         [
+            new Bottle(),
+            new Bottle(),
+            new Bottle(),
+            new Bottle(),
             new Bottle(),
             new Bottle(),
             new Bottle(),
