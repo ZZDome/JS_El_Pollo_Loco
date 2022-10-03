@@ -1,4 +1,4 @@
-class Bottle extends DrawableObject {
+class Bottle extends MovableObject {
 
     x = Math.random() * 2000;
     y = 380;
@@ -16,9 +16,11 @@ class Bottle extends DrawableObject {
     }
 
     play(){
-        this.AUDIO_BOTTLEPICK.play();
-        setTimeout(() => {
-            this.AUDIO_BOTTLEPICK.pause();
-        }, 2000);
+        if(!this.isMute()){
+            this.AUDIO_BOTTLEPICK.play();
+            setTimeout(() => {
+                this.AUDIO_BOTTLEPICK.pause();
+            }, 2000);
+        } 
     }
 }

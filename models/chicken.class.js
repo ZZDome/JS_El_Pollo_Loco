@@ -34,7 +34,9 @@ class Chicken extends MovableObject {
             if(this.isDead()){
                 this.isAlive = false;
                 if(indexHurt == 0){
-                    this.AUDIO_HURT.play();
+                    if(!this.isMute()){
+                        this.AUDIO_HURT.play();
+                    }
                     indexHurt++
                 }
             }else{

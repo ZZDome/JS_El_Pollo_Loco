@@ -118,14 +118,18 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (this.attacking && !this.isHurt() && this.isAlive && this.fighting && this.isAboveGround() && this.characterAlive) {
                 this.playAnimation(this.IMAGES_ATTACK);
-                this.AUDIO_ATTACK.play();
+                if(!this.isMute()){
+                    this.AUDIO_ATTACK.play();
+                }
             }
         }, 120);
 
         setInterval(() => {
             if (this.alert) {
                 this.playAnimation(this.IMAGES_ALERT);
-                this.AUDIO_ALERT.play();
+                if(!this.isMute()){
+                    this.AUDIO_ALERT.play();
+                }
             }
         }, 150);
 
@@ -134,7 +138,9 @@ class Endboss extends MovableObject {
                 this.isAlive = false;
                 if (imageDeadIndex < 3) {
                     this.playAnimation(this.IMAGES_DEAD);
-                    this.AUDIO_DEAD.play();
+                    if(!this.isMute()){
+                        this.AUDIO_DEAD.play();
+                    }
                 } else {
                     this.loadImage(this.IMAGES_DEAD[2]);
                 }
@@ -145,7 +151,9 @@ class Endboss extends MovableObject {
         setInterval(() => {
             if (this.isHurt() && this.fighting) {
                 this.playAnimation(this.IMAGES_HURT);
-                this.AUDIO_HURT.play();
+                if(!this.isMute()){
+                    this.AUDIO_HURT.play();
+                }
             }
         }, 150);
     }

@@ -28,9 +28,11 @@ class Coin extends MovableObject {
     }
 
     play(){
-        this.AUDIO_COIN.play();
-        setTimeout(() => {
-            this.AUDIO_COIN.pause();
-        }, 2000);
+        if(!this.isMute()){
+            this.AUDIO_COIN.play();
+            setTimeout(() => {
+                this.AUDIO_COIN.pause();
+            }, 2000);
+        }
     }
 }

@@ -34,7 +34,9 @@ class ThrowableObject extends MovableObject {
         this.throw(charX, charY, charSpeedX);
         this.AUDIO_THROW.loop = false;
         this.AUDIO_THROW.volume = 0.6;
-        this.AUDIO_THROW.play();
+        if(!this.isMute()){
+            this.AUDIO_THROW.play();
+        }
     }
 
     throw(x, y, charSpeedX){
@@ -44,7 +46,9 @@ class ThrowableObject extends MovableObject {
         setInterval(() => {
             if(this.splash && this.isAlive || !this.isAboveGround() && this.isAlive){
                 this.playAnimation(this.IMAGES_SPLASH);
-                this.playSmash();
+                if(!this.isMute()){
+                    this.playSmash();
+                }
                 this.AUDIO_THROW.pause();
             }else{
                 this.playAnimation(this.IMAGES_THROW);

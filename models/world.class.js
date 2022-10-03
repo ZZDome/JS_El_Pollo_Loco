@@ -88,7 +88,7 @@ class World {
         this.AUDIO_CHICKENBG.currentTime = 0;
         this.AUDIO_BACKGROUND.currentTime = 0;
     }
-
+    
     run() {
         setInterval(() => {
             this.checkCollisions();
@@ -191,7 +191,6 @@ class World {
     }
 
     checkStamp() {
-        console.log(this.character.y)
         this.level.enemies.forEach((enemy) => {
             if (this.character.isStamp(enemy) && this.character.isAboveGround() && !enemy.isDead()) {
                 this.character.speedY = 15;
@@ -248,16 +247,7 @@ class World {
             } catch (e) {
                 console.warn('Error', e);
                 console.log(objects.img);
-
             }
-
-
-            /* this.ctx.beginPath();
-            this.ctx.lineWidth = '5';
-            this.ctx.strokeStyle = 'blue';
-            this.ctx.rect(objects.x + objects.offsetX, objects.y + objects.offsetY, objects.width - objects.offsetX, objects.height - objects.offsetY);
-            this.ctx.stroke(); */
-
         });
     }
 
@@ -269,14 +259,6 @@ class World {
             object.x = object.x * -1;
         };
         this.ctx.drawImage(object.img, object.x, object.y, object.width, object.height);
-
-        /* this.ctx.beginPath();
-        this.ctx.lineWidth = '5';
-        this.ctx.strokeStyle = 'blue';
-        this.ctx.rect(object.x + object.offsetX, object.y + object.offsetY, object.width - object.offsetX, object.height - object.offsetY);
-        this.ctx.stroke(); */
-
-
         if (object.otherDirection) {
             object.x = object.x * -1;
             this.ctx.restore();

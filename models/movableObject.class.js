@@ -10,6 +10,11 @@ class MovableObject extends DrawableObject {
     isAlive = true;
     alert = false;
     fall = false;
+    muteAudio = false;
+
+    isMute(){
+        return world.muteAudio;
+    }
 
     isColliding(mo){
         if(this.isAlive && mo.isAlive || mo instanceof Bottle){
