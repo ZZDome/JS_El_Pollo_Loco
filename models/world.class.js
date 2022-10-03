@@ -88,7 +88,7 @@ class World {
         this.AUDIO_CHICKENBG.currentTime = 0;
         this.AUDIO_BACKGROUND.currentTime = 0;
     }
-    
+
     run() {
         setInterval(() => {
             this.checkCollisions();
@@ -130,33 +130,41 @@ class World {
     paralaxeBG() {
         setInterval(() => {
             if (this.keyboard.RIGHT && !this.keyboard.LEFT && this.character.x < this.level.level_end_x) {
-                this.level.bglayer3.forEach(bg => {
-                    bg.x += 2;
-                });
-                this.level.bglayer2.forEach(bg => {
-                    bg.x += 1;
-                });
-                this.level.cloudsLayer2.forEach(bg => {
-                    bg.x += 2;
-                });
-                this.level.clouds.forEach(bg => {
-                    bg.x += 1;
-                });
+                this.paralaxeRight();
             } else if (this.keyboard.LEFT && !this.keyboard.RIGHT && this.character.x > 0) {
-                this.level.bglayer3.forEach(bg => {
-                    bg.x -= 2;
-                });
-                this.level.bglayer2.forEach(bg => {
-                    bg.x -= 1;
-                });
-                this.level.cloudsLayer2.forEach(bg => {
-                    bg.x -= 2;
-                });
-                this.level.clouds.forEach(bg => {
-                    bg.x -= 1;
-                });
+                this.paralaxeLeft();
             }
         }, 1000 / 60);
+    }
+
+    paralaxeRight() {
+        this.level.bglayer3.forEach(bg => {
+            bg.x += 2;
+        });
+        this.level.bglayer2.forEach(bg => {
+            bg.x += 1;
+        });
+        this.level.cloudsLayer2.forEach(bg => {
+            bg.x += 2;
+        });
+        this.level.clouds.forEach(bg => {
+            bg.x += 1;
+        });
+    }
+
+    paralaxeLeft() {
+        this.level.bglayer3.forEach(bg => {
+            bg.x -= 2;
+        });
+        this.level.bglayer2.forEach(bg => {
+            bg.x -= 1;
+        });
+        this.level.cloudsLayer2.forEach(bg => {
+            bg.x -= 2;
+        });
+        this.level.clouds.forEach(bg => {
+            bg.x -= 1;
+        });
     }
 
     checkCollisions() {
@@ -267,36 +275,8 @@ class World {
 
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
         if (!this.startScreen && !this.gameOverScreen && !this.victoryScreen) {
-            this.drawObject(this.air);
-
-            this.ctx.translate(this.camaraX, 0);
-
-
-            this.drawObjects(this.level.bglayer3);
-            this.drawObjects(this.level.cloudsLayer2);
-            this.drawObjects(this.level.bglayer2);
-            this.drawObjects(this.level.clouds);
-            this.drawObjects(this.level.bglayer1);
-
-            this.drawObjects(this.level.enemies);
-            this.drawObjects(this.level.coins);
-            this.drawObject(this.character);
-            this.drawObjects(this.throwableObjects);
-            this.drawObjects(this.level.bottles);
-
-            this.ctx.translate(-this.camaraX, 0);
-            this.drawObject(this.healthBar);
-            this.drawObject(this.bottleBar);
-            this.drawObject(this.coinBar);
-            if (this.level.enemies[this.level.enemies.length - 1].fighting) {
-                this.drawObject(this.endbossBar);
-            }
-            this.ctx.translate(this.camaraX, 0);
-
-            this.ctx.translate(-this.camaraX, 0);
-
+            this.drawGame();
         } else if (this.startScreen) {
             this.drawObject(this.start);
         } else if (this.gameOverScreen) {
@@ -304,10 +284,45 @@ class World {
         } else if (this.victoryScreen) {
             this.drawObject(this.victory);
         }
-
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
+    }
+
+    drawGame() {
+        this.drawObject(this.air);
+        this.ctx.translate(this.camaraX, 0);
+        this.drawBG();
+        this.drawObj();
+        this.ctx.translate(-this.camaraX, 0);
+        this.drawUI();
+        this.ctx.translate(this.camaraX, 0);
+        this.ctx.translate(-this.camaraX, 0);
+    }
+
+    drawBG() {
+        this.drawObjects(this.level.bglayer3);
+        this.drawObjects(this.level.cloudsLayer2);
+        this.drawObjects(this.level.bglayer2);
+        this.drawObjects(this.level.clouds);
+        this.drawObjects(this.level.bglayer1);
+    }
+
+    drawObj() {
+        this.drawObjects(this.level.enemies);
+        this.drawObjects(this.level.coins);
+        this.drawObject(this.character);
+        this.drawObjects(this.throwableObjects);
+        this.drawObjects(this.level.bottles);
+    }
+
+    drawUI() {
+        this.drawObject(this.healthBar);
+        this.drawObject(this.bottleBar);
+        this.drawObject(this.coinBar);
+        if (this.level.enemies[this.level.enemies.length - 1].fighting) {
+            this.drawObject(this.endbossBar);
+        }
     }
 }

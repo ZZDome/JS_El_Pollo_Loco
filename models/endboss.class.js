@@ -109,51 +109,67 @@ class Endboss extends MovableObject {
 
     animateWalk() {
         let imageDeadIndex = 0;
+        this.walking();
+        this.animateAttack();
+        this.animateAlert();
+        this.animateDead();
+        this.animateHurt();
+    }
+
+    walking() {
         setInterval(() => {
             if (!this.alert && this.isAlive && !this.isHurt() && this.fighting && !this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_WALKING);
             }
         }, 150);
+    }
 
+    animateAttack() {
         setInterval(() => {
             if (this.attacking && !this.isHurt() && this.isAlive && this.fighting && this.isAboveGround() && this.characterAlive) {
                 this.playAnimation(this.IMAGES_ATTACK);
-                if(!this.isMute()){
+                if (!this.isMute()) {
                     this.AUDIO_ATTACK.play();
                 }
             }
         }, 120);
+    }
 
+    animateAlert() {
         setInterval(() => {
             if (this.alert) {
                 this.playAnimation(this.IMAGES_ALERT);
-                if(!this.isMute()){
+                if (!this.isMute()) {
                     this.AUDIO_ALERT.play();
                 }
             }
         }, 150);
+    }
 
+    animateHurt() {
+        setInterval(() => {
+            if (this.isHurt() && this.fighting) {
+                this.playAnimation(this.IMAGES_HURT);
+                if (!this.isMute()) {
+                    this.AUDIO_HURT.play();
+                }
+            }
+        }, 150);
+    }
+
+    animateDead() {
         setInterval(() => {
             if (this.isDead() && this.fighting) {
                 this.isAlive = false;
                 if (imageDeadIndex < 3) {
                     this.playAnimation(this.IMAGES_DEAD);
-                    if(!this.isMute()){
+                    if (!this.isMute()) {
                         this.AUDIO_DEAD.play();
                     }
                 } else {
                     this.loadImage(this.IMAGES_DEAD[2]);
                 }
                 imageDeadIndex++
-            }
-        }, 150);
-
-        setInterval(() => {
-            if (this.isHurt() && this.fighting) {
-                this.playAnimation(this.IMAGES_HURT);
-                if(!this.isMute()){
-                    this.AUDIO_HURT.play();
-                }
             }
         }, 150);
     }

@@ -8,8 +8,4 @@ class Backgroundlayer3 extends MovableObject {
         super().loadImage('img/5_background/layers/3_third_layer/full.png');
         this.x = x;
     }
-
-    
-
-
 }
