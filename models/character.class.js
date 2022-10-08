@@ -96,15 +96,7 @@ class Character extends MovableObject {
         setInterval(() => {
             this.AUDIO_WALKING.pause();
             this.speedX = 0;
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.moveRight();
-            };
-            if (this.world.keyboard.LEFT && this.x > 0) {
-                this.moveLeft();
-            };
-            if (this.world.keyboard.UP && !this.isAboveGround() && !this.jumping) {
-                this.jump();
-            }
+            this.checkMove();
             this.isJumping();
             this.world.camaraX = -this.x + 100;
         }, 1000 / 60);
@@ -112,6 +104,18 @@ class Character extends MovableObject {
         this.animateDead();
         this.animateJump();
         this.animateIdle();
+    }
+
+    checkMove(){
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRight();
+        };
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeft();
+        };
+        if (this.world.keyboard.UP && !this.isAboveGround() && !this.jumping) {
+            this.jump();
+        }
     }
 
     moveRight(){
